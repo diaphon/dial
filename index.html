@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="de-AT">
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+  <meta name="author" content="Andreas Dittrich">
+  <meta name="date" content="2020-04-18"> <!-- Stand -->
+  <meta name="description" lang="de" content="Das Digitale Ilse Aichinger Literaturverzeichnis (dial) setzt sich zum Ziel, möglichst alle publizierten Texte von Ilse Aichinger (1921–2016) bibliografisch zu verzeichnen.">
+  <meta name="keywords" lang="de" content="Ilse Aichinger, Aichinger, dial, Literaturverzeichnis, Personalbibliographie, Personalbibliografie, Bibliographie, Bibliografie">
+  <meta name="keywords" lang="en" content="Ilse Aichinger, Aichinger, dial, bibliography">
+  <title>dial. Das digitale Ilse Aichinger Literaturverzeichnis</title>
+<!--   <style>
+    /*START ZEILEN NUMMERIEREN*/
+    .tafel table {
+      counter-reset: rowNumber;
+    }
+
+    .tafel table tr:not(:first-child) {
+      counter-increment: rowNumber;
+    }
+
+    .tafel table tr td:first-child::before {
+      content: counter(rowNumber) ". ";
+      min-width: 1em;
+      font-weight: bold;
+    }
+  </style> -->
+
+
+<!-- 
+
+  whole script based on ITEMSJS:
+  https://github.com/itemsapi/itemsjs
+
+  and on an adaption from Martina Trognitz:
+  https://github.com/bellerophons-pegasus/lobib
+
+  thank you!
+
+-->
+
+<script src="dial.js"></script>
+<script src="itemsjs.js"></script>
+<!-- https://cdn.rawgit.com/itemsapi/itemsjs/master/dist/itemsjs.js -->
+<script src="vue.min.js"></script>
+<!-- https://cdn.jsdelivr.net/vue/latest/vue.min.js -->
+<link href="bootstrap.min.css" rel="stylesheet"/>
+<!-- https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css -->
+<link rel="shortcut icon" href="./favicon.ico">
+
+<div id="el">
+  <div class="container" style="margin-top: 50px;">
+
+<table style="width:100%;">
+  <tr>
+    <td style="width: 16.6%"><div style="display: flex; justify-content: center; align-items: center;">
+      <a href="#" v-on:click="reset()"><img alt="dial reset" src="rotary_dial.png" style="height: 10em;"></a></div>
+    </td>
+    <td style="padding-left: 1em;">
+      <a href="#" v-on:click="reset()"><h1 style="color: #0b477c">dial.</h1></a>
+      <p style="font-size: 1em;color: gray;">das digitale ilse aichinger literaturverzeichnis
+        <span style="font-size: 1em;color: gray; padding-left: 1em;">
+          <i>
+            <b>gamma</b><br/>
+            <span style="font-size: .8em;">zusammengestellt von Andreas Dittrich</span>
+          </i>
+        </span>
+      </p>
+    </td>
+    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 18.04.2020</span></i></td>
+  </tr>
+</table>
+
+    <div class="row">
+      <div class="col-md-2 col-xs-2" style="padding-top: 2em; min-width: 7em;">
+        <form >
+          <input type="text" v-model="query" style="width: 100%" placeholder="Suche">
+        </form>
+
+        
+        <div v-for="facet in searchResult.data.aggregations">
+          <h5 style="margin-bottom: 5px;"><strong style="color: black;"> {{ facet.title }} </strong></h5><!-- blau: #337ab7 Links: #0b477c-->
+
+          <ul class="browse-list list-unstyled long-list" style="margin-bottom: 0;">
+            <li v-for="bucket in facet.buckets">
+            <div class="checkbox block" style="margin-top: 0; margin-bottom: 0;">
+              <label>
+                <input class="checkbox" type="checkbox" v-model="filters[facet.name]" v-bind:value="bucket.key">
+                {{ bucket.key }} ({{ bucket.doc_count }})
+              </label>
+            </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-10 col-xs-10" style="padding-top: 2em;"> <!-- "class += tafel" für nummerierung -->
+        <div class="breadcrumbs"></div>
+        <div class="clearfix"></div>
+        <table class="table table-striped" style="table-layout:fixed; min-width: 40em;border-bottom:2px dotted gray;">
+          <tbody>
+
+          	<tr style="border-bottom:2pt dotted black;">
+              <th>Titel</th>
+              <th>erschienen in</th>
+              <th style="width: 10em;">Datum</th>
+              <th style="width: 9em;">Wikidata-ID</th>
+            </tr>
+
+            <tr v-for="item of searchResult.data.items">
+
+              <!-- 1. Spalte -->
+              <td>
+                <span style="color: #0b477c;">
+
+                  <b v-if="item.subtitle">{{ item.title }} <br/> {{ item.subtitle }}</b>
+                  <b v-else>{{ item.title }}</b><br/>
+
+                  <b v-if="item.keywords" style="color: green;">(Erstpublikation)<br/></b>
+                  <b v-else></b>
+
+                </span>
+                <i v-if="item.author.length!=1">{{ item.author.join(' & ') }}</i>
+                <i v-else>{{ item.author.join('') }}</i>
+                <!-- <br/><small style="background-color: yellow"><i>{{ item.ENTRYTYPE }}</i> – {{item.ID}}</small> -->
+              </td>
+
+              <!-- 2. Spalte -->
+              <td>
+                <span v-if="item.ENTRYTYPE === 'Artikel'">📰</span>
+                <span v-else-if="item.ENTRYTYPE === 'Buchbeitrag'">📖</span>
+                <span v-else-if="item.ENTRYTYPE === 'Buch '">📕</span>
+                <span v-else><span style="font-size: smaller;">({{ item.ENTRYTYPE }})</span></span>
+
+                <span v-if="item.journaltitle">in:<i> {{ item.journaltitle }}</i><span v-if="item.issuetitle"><i>. {{ item.issuetitle }}</i>, </span><span v-else>.</span>
+                    <span v-if="item.volume">{{ item.volume }}<span v-if="item.number">/{{ item.number }},</span></span>
+                    <span v-else-if="item.number">Nr. {{ item.number }}</span>
+                </span>
+
+                <span v-if="item.booksubtitle">in: <i>{{ item.booktitle }}. {{ item.booksubtitle }}</i>,</span>
+                <span v-else-if="item.booktitle">in: <i>{{ item.booktitle }}</i>,</span>
+                <span v-if="item.maintitle"><i>{{item.maintitle}}</i>,</span>
+                <span v-if="item.editor">hrsg. v. {{ item.editor.join(' & ') }},</span>
+
+                <span v-if="item.journaltitle"></span>
+                <span v-else>
+	                <span v-if="item.publisher">
+	                  <span v-if="item.publisher.length!=1">{{ item.publisher.join(' & ') }}:</span>
+	                  <span v-else-if="item.publisher.length==1">{{ item.publisher.join('') }}:</span>
+	                </span>
+	                <span v-else><span v-else>[ohne Verlagsangabe]</span></span>
+                </span>
+
+                <span v-if="item.location">{{ item.location.join(' & ') }}</span><span v-if="item.date"> {{ item.date }}</span><span v-if="item.pages">, {{ item.pages }}</span>
+
+                <span v-if="item.note" v-bind:href="item.note"><br/>{{ item.note }}</span>
+                <span><a v-if="item.url" v-bind:href="item.url"><br/>{{ item.url }}</a></span>
+              </td>
+
+              <!-- 3. Spalte -->
+              <td style="word-wrap:break-word;">{{ item.date }}</td>
+
+              <!-- 4. Spalte -->
+              <td><a v-bind:href="'https://www.wikidata.org/wiki/' + item.wikidata">{{ item.wikidata }}</a></td>
+          
+          </tr>
+          </tbody>
+        </table>
+
+        <div style="text-align:right;">
+        	<span v-if="searchResult.pagination.total==1">1 Eintrag</span>
+          <span v-if="searchResult.pagination.total>1">{{ searchResult.pagination.total }} Einträge</span>
+        </div>
+        
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="clearfix" style="margin-bottom: 100px;"></div>
+    </div>
+  <div style="font-size: 0.8em; text-align: right; padding-bottom: 4em; padding-left: 50%;">
+  <br/><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 <img alt="" style="height: 1.2em;" src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Cc.logo.circle.svg"/><img alt="" style="height: 1.2em;" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Cc-by_new.svg"/></a> Andreas Dittrich
+  <br/>see Dittrich, Andreas: <a href="https://epub.oeaw.ac.at/0xc1aa5576_0x003b3987.pdf">"dial. Das Digitale Ilse Aichinger Literaturverzeichnis. Methoden, Quellen und eine erste Auswertung des Literaturverzeichnisses"</a>, in: <i>digital humanities austria 2018</i>, DOI:<a href="https://doi.org/10.1553/dha-proceedings2018s34">10.1553/dha-proceedings2018s34</a>
+  <br/>sponsored by <a href="https://mww-forschung.de/">Forschungsverbund MWW / DLA Marbach</a>
+  <br/>scripts and readme at <a href="https://github.com/diaphon/dial">github.com/diaphon/dial</a>
+  <br/>website based on <a href="https://github.com/itemsapi/itemsjs/">ItemsJS</a> (Apache License 2.0)
+  <br/>adapted with the help of <a href="https://github.com/bellerophons-pegasus">Martina</a>
+  <br/>archived at <a href="https://id.acdh.oeaw.ac.at/dial">ARCHE</a> at <a href="https://acdh.oeaw.ac.at/">ACDH-CH</a>
+  <br/>Wikidata item-ID: <a href="https://www.wikidata.org/wiki/Q54007056">Q54007056</a>
+  <br/>thanks to <a href="https://github.com/diaphon/dial/blob/master/readme.md">all supporters</a>!  
+  </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<script >
+var configuration = {
+  searchableFields: ['title', 'subtitle', 'booktitle', 'maintitle', 'journaltitle', 'date', 'author', 'wikidata'],
+  sortings: {
+    date: {
+      field: 'date',
+      order: 'asc'
+    }
+  },
+  // FACETTIERUNG:
+  aggregations: {
+    Erstpublikation: {
+    	title: 'Erstpublikation',
+      order: 'asc',
+    	size: 2
+    },
+    ENTRYTYPE: {
+      title: 'Publikationsform',
+      order: 'desc',
+      size: 5
+    },
+	  Jahrzehnt: {
+      title: 'Jahrzehnt',
+      order: 'asc',
+      sort: 'term',
+      size: 10
+    },
+    location: {
+      title: 'Ort',
+      size: 10
+    },
+    journaltitle: {
+      title: 'Zeitung / Zeitschrift',
+      size: 10
+    },
+    genre: {
+      title: 'Gattung',
+      size: 5
+    },
+    author: {
+      title: 'Autorschaft',
+      size: 5,
+    },
+    series: {
+      title: 'Serie',
+      size: 5,
+    },
+    seiten: {
+      title: 'Seitenanzahl',
+      order: 'asc',
+      sort: 'term',
+      size: 10
+    },
+    urlb: {
+      title: 'URL',
+      order: 'asc',
+      size: 2
+    },
+  }
+}
+
+// the rows comes from external resources
+// https://github.com/itemsapi/itemsapi-example-data/blob/master/jsfiddle/imdb.js
+itemsjs = itemsjs(rows, configuration);
+
+var vm = new Vue({
+  el: '#el',
+  data: function () {
+
+    // making it more generic
+    var filters = {};
+    Object.keys(configuration.aggregations).map(function(v) {
+      filters[v] = [];
+    })
+
+    return {
+      query: '',
+      // initializing filters with empty arrays
+      filters: filters,
+    }
+  },
+  methods: {
+    reset: function () {
+      var filters = {};
+      Object.keys(configuration.aggregations).map(function(v) {
+        filters[v] = [];
+      })
+
+      this.filters = filters;
+      this.query = '';
+    }
+  },
+  computed: {
+    searchResult: function () {
+
+      var result = itemsjs.search({
+        query: this.query,
+        filters: this.filters,
+        // per_page: 42 //* wieviele Einträge sollen anezeigt werden **/
+        per_page: 1900
+      })
+      return result
+    }
+  }
+});
+</script>
+
+</head><body></body></html>
