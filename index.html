@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <meta name="author" content="Andreas Dittrich">
-  <meta name="date" content="2020-07-24"> <!-- Stand -->
+  <meta name="date" content="2020-10-19"> <!-- Stand -->
   <meta name="description" lang="de" content="Das Digitale Ilse Aichinger Literaturverzeichnis (dial) setzt sich zum Ziel, möglichst alle publizierten Texte von Ilse Aichinger (1921–2016) bibliografisch zu verzeichnen.">
   <meta name="keywords" lang="de" content="Ilse Aichinger, Aichinger, dial, Literaturverzeichnis, Personalbibliographie, Personalbibliografie, Bibliographie, Bibliografie">
   <meta name="keywords" lang="en" content="Ilse Aichinger, Aichinger, dial, bibliography">
@@ -52,7 +52,7 @@
         </span>
       </p>
     </td>
-    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 24.07.2020</span></i></td>
+    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 19.10.2020</span></i></td>
   </tr>
 </table>
 
@@ -168,11 +168,14 @@
   <br/>sponsored by <a href="https://mww-forschung.de/">Forschungsverbund MWW / DLA Marbach</a>
   <br/>scripts and readme at <a href="https://github.com/diaphon/dial">github.com/diaphon/dial</a>
   <br/>website based on <a href="https://github.com/itemsapi/itemsjs/">ItemsJS</a> (Apache License 2.0)
-  <br/>adapted with the help of <a href="https://github.com/bellerophons-pegasus">Martina</a>
+  <br/>adapted with the help of <a href="https://github.com/bellerophons-pegasus">Martina Trognitz</a>
+  <br/>and <a href="https://www.editionen.uni-wuppertal.de/de/personen/kollegiatinnen-und-kollegiaten/politycki-bastian.html">Bastian Politycki</a> (@<a href="https://www.editionen.uni-wuppertal.de">GRK 2196</a>)
   <br/>archived at <a href="https://id.acdh.oeaw.ac.at/dial">ARCHE</a> at <a href="https://acdh.oeaw.ac.at/">ACDH-CH</a>
   <br/>Wikidata item-ID: <a href="https://www.wikidata.org/wiki/Q54007056">Q54007056</a>
   <br/>thanks to <a href="https://github.com/diaphon/dial/blob/master/readme.md">all supporters</a>!
-  <br/><br/><a href="https://www.dla-marbach.de/impressum/">Impressum</a> // <a href="https://www.dla-marbach.de/datenschutzerklaerung/">Datenschutzerklärung</a>
+  <br/><br/>
+  Andreas Dittrich,<br/>
+  <a href="https://www.dla-marbach.de/impressum/">Impressum</a> und <a href="https://www.dla-marbach.de/datenschutzerklaerung/">Datenschutzerklärung</a> des <i>DLA Marbach</i>
   </div>
 
   </div>
@@ -227,7 +230,7 @@ var configuration = {
     },
     series: {
       title: 'Serie',
-      size: 5,
+      size: 7,
     },
     seiten: {
       title: 'Seitenanzahl',
@@ -261,6 +264,7 @@ var vm = new Vue({
       query: '',
       // initializing filters with empty arrays
       filters: filters,
+      sort: configuration.sortings
     }
   },
   methods: {
@@ -280,6 +284,7 @@ var vm = new Vue({
       var result = itemsjs.search({
         query: this.query,
         filters: this.filters,
+        sort: this.sort.date,
         // per_page: 42 //* wieviele Einträge sollen anezeigt werden **/
         per_page: 1900
       })
