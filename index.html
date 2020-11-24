@@ -3,28 +3,11 @@
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <meta name="author" content="Andreas Dittrich">
-  <meta name="date" content="2020-04-18"> <!-- Stand -->
+  <meta name="date" content="2020-11-24"> <!-- Stand -->
   <meta name="description" lang="de" content="Das Digitale Ilse Aichinger Literaturverzeichnis (dial) setzt sich zum Ziel, möglichst alle publizierten Texte von Ilse Aichinger (1921–2016) bibliografisch zu verzeichnen.">
   <meta name="keywords" lang="de" content="Ilse Aichinger, Aichinger, dial, Literaturverzeichnis, Personalbibliographie, Personalbibliografie, Bibliographie, Bibliografie">
   <meta name="keywords" lang="en" content="Ilse Aichinger, Aichinger, dial, bibliography">
   <title>dial. Das digitale Ilse Aichinger Literaturverzeichnis</title>
-<!--   <style>
-    /*START ZEILEN NUMMERIEREN*/
-    .tafel table {
-      counter-reset: rowNumber;
-    }
-
-    .tafel table tr:not(:first-child) {
-      counter-increment: rowNumber;
-    }
-
-    .tafel table tr td:first-child::before {
-      content: counter(rowNumber) ". ";
-      min-width: 1em;
-      font-weight: bold;
-    }
-  </style> -->
-
 
 <!-- 
 
@@ -47,16 +30,19 @@
 <!-- https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css -->
 <link rel="shortcut icon" href="./favicon.ico">
 
+</head><body>
+<noscript><div style="background: yellow; font-weight: bold; text-align: center; padding-top: 1%; padding-bottom: 1%">Leider funktioniert diese Seite nur mit JavaScript. Alternativ können sie eine archivierte Version des Verzeichnisses als PDF bei <a href="https://id.acdh.oeaw.ac.at/dial">ARCHE</a> herunterladen.<br/><br/>Unfortunately this page only works with JavaScript. Alternatively you can download an archived version of the directory as PDF from <a href="https://id.acdh.oeaw.ac.at/dial">ARCHE</a>.</div></noscript>
+  
 <div id="el">
   <div class="container" style="margin-top: 50px;">
 
 <table style="width:100%;">
   <tr>
-    <td style="width: 16.6%"><div style="display: flex; justify-content: center; align-items: center;">
-      <a href="#" v-on:click="reset()"><img alt="dial reset" src="rotary_dial.png" style="height: 10em;"></a></div>
+    <td style="width: 16.6%"><div style="display: flex; justify-content: left; align-items: left;">
+      <a href="#" v-on:click="reset()"><img alt="dial reset" src="rotary_dial.png" style="padding-right: 2em; width: 100%"></a></div>
     </td>
     <td style="padding-left: 1em;">
-      <a href="#" v-on:click="reset()"><h1 style="color: #0b477c">dial.</h1></a>
+      <a href="#" v-on:click="reset()"><h1 style="color: #0b477c;">dial.</h1></a><br/>
       <p style="font-size: 1em;color: gray;">das digitale ilse aichinger literaturverzeichnis
         <span style="font-size: 1em;color: gray; padding-left: 1em;">
           <i>
@@ -66,14 +52,14 @@
         </span>
       </p>
     </td>
-    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 18.04.2020</span></i></td>
+    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 24.11.2020</span></i></td>
   </tr>
 </table>
 
     <div class="row">
       <div class="col-md-2 col-xs-2" style="padding-top: 2em; min-width: 7em;">
         <form >
-          <input type="text" v-model="query" style="width: 100%" placeholder="Suche">
+          <input type="text" v-model="query" style="width: 100%" placeholder="Titel, Person, Datum, QID">
         </form>
 
         
@@ -119,8 +105,7 @@
                   <b v-else></b>
 
                 </span>
-                <i v-if="item.author.length!=1">{{ item.author.join(' & ') }}</i>
-                <i v-else>{{ item.author.join('') }}</i>
+                <i>{{ item.author }}</i>
                 <!-- <br/><small style="background-color: yellow"><i>{{ item.ENTRYTYPE }}</i> – {{item.ID}}</small> -->
               </td>
 
@@ -139,7 +124,7 @@
                 <span v-if="item.booksubtitle">in: <i>{{ item.booktitle }}. {{ item.booksubtitle }}</i>,</span>
                 <span v-else-if="item.booktitle">in: <i>{{ item.booktitle }}</i>,</span>
                 <span v-if="item.maintitle"><i>{{item.maintitle}}</i>,</span>
-                <span v-if="item.editor">hrsg. v. {{ item.editor.join(' & ') }},</span>
+                <span v-if="item.editor">hrsg. v. {{ item.editor }},</span>
 
                 <span v-if="item.journaltitle"></span>
                 <span v-else>
@@ -180,12 +165,16 @@
   <br/><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 <img alt="" style="height: 1.2em;" src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Cc.logo.circle.svg"/><img alt="" style="height: 1.2em;" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Cc-by_new.svg"/></a> Andreas Dittrich
   <br/>see Dittrich, Andreas: <a href="https://epub.oeaw.ac.at/0xc1aa5576_0x003b3987.pdf">"dial. Das Digitale Ilse Aichinger Literaturverzeichnis. Methoden, Quellen und eine erste Auswertung des Literaturverzeichnisses"</a>, in: <i>digital humanities austria 2018</i>, DOI:<a href="https://doi.org/10.1553/dha-proceedings2018s34">10.1553/dha-proceedings2018s34</a>
   <br/>sponsored by <a href="https://mww-forschung.de/">Forschungsverbund MWW / DLA Marbach</a>
-  <br/>scripts and readme at <a href="https://github.com/diaphon/dial">github.com/diaphon/dial</a>
+  <br/>scripts and readme at <a href="https://github.com/diaphon/dial">github.com/diaphon/dial</a>,
   <br/>website based on <a href="https://github.com/itemsapi/itemsjs/">ItemsJS</a> (Apache License 2.0)
-  <br/>adapted with the help of <a href="https://github.com/bellerophons-pegasus">Martina</a>
+  <br/>adapted with the help of <a href="https://github.com/bellerophons-pegasus">Martina Trognitz</a>
+  <br/>and <a href="https://www.editionen.uni-wuppertal.de/de/personen/kollegiatinnen-und-kollegiaten/politycki-bastian.html">Bastian Politycki</a> (@<a href="https://www.editionen.uni-wuppertal.de">GRK 2196</a>)
   <br/>archived at <a href="https://id.acdh.oeaw.ac.at/dial">ARCHE</a> at <a href="https://acdh.oeaw.ac.at/">ACDH-CH</a>
   <br/>Wikidata item-ID: <a href="https://www.wikidata.org/wiki/Q54007056">Q54007056</a>
-  <br/>thanks to <a href="https://github.com/diaphon/dial/blob/master/readme.md">all supporters</a>!  
+  <br/>thanks to <a href="https://github.com/diaphon/dial/blob/master/readme.md">all supporters</a>!
+  <br/><br/>
+  Andreas Dittrich,<br/>
+  <a href="https://www.dla-marbach.de/impressum/">Impressum</a> und <a href="https://www.dla-marbach.de/datenschutzerklaerung/">Datenschutzerklärung</a> des <i>DLA Marbach</i>
   </div>
 
   </div>
@@ -195,10 +184,9 @@
 
 
 
-
 <script >
 var configuration = {
-  searchableFields: ['title', 'subtitle', 'booktitle', 'maintitle', 'journaltitle', 'date', 'author', 'wikidata'],
+  searchableFields: ['title', 'subtitle', 'booktitle', 'maintitle', 'journaltitle', 'issuetitle', 'date', 'author', 'editor', 'wikidata'],
   sortings: {
     date: {
       field: 'date',
@@ -241,7 +229,7 @@ var configuration = {
     },
     series: {
       title: 'Serie',
-      size: 5,
+      size: 7,
     },
     seiten: {
       title: 'Seitenanzahl',
@@ -275,6 +263,7 @@ var vm = new Vue({
       query: '',
       // initializing filters with empty arrays
       filters: filters,
+      sort: configuration.sortings
     }
   },
   methods: {
@@ -294,6 +283,7 @@ var vm = new Vue({
       var result = itemsjs.search({
         query: this.query,
         filters: this.filters,
+        sort: this.sort.date,
         // per_page: 42 //* wieviele Einträge sollen anezeigt werden **/
         per_page: 1900
       })
@@ -302,5 +292,5 @@ var vm = new Vue({
   }
 });
 </script>
-
-</head><body></body></html>
+</body>
+</html>

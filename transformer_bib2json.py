@@ -113,7 +113,8 @@ with open("dial.js", "w") as fh:
 			entry['urlb'] = 'nein'
 		# multiple Autoren:
 		if 'author' in entry:
-			entry['author'] = re.split(' AND ', entry['author'])
+			entry['author'] = re.sub('[\{\}]', '', entry['author'])
+			entry['author'] = re.sub(' AND ', ' & ', entry['author'])
 		# multiple Buch-Autoren:
 		if 'bookauthor' in entry:
 			entry['bookauthor'] = re.split(' AND ', entry['bookauthor'])
@@ -125,7 +126,8 @@ with open("dial.js", "w") as fh:
 			entry['publisher'] = re.split(' AND ', entry['publisher'])
 		# multiple Herausgeber:
 		if 'editor' in entry:
-			entry['editor'] = re.split(' AND ', entry['editor'])
+			entry['editor'] = re.sub('[\{\}]', '', entry['editor'])
+			entry['editor'] = re.sub(' AND ', ' & ', entry['editor'])
 		# Schreiben:
 		for element in entry:
 			if isinstance(entry[element], str):
