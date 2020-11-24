@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <meta name="author" content="Andreas Dittrich">
-  <meta name="date" content="2020-11-21"> <!-- Stand -->
+  <meta name="date" content="2020-11-24"> <!-- Stand -->
   <meta name="description" lang="de" content="Das Digitale Ilse Aichinger Literaturverzeichnis (dial) setzt sich zum Ziel, möglichst alle publizierten Texte von Ilse Aichinger (1921–2016) bibliografisch zu verzeichnen.">
   <meta name="keywords" lang="de" content="Ilse Aichinger, Aichinger, dial, Literaturverzeichnis, Personalbibliographie, Personalbibliografie, Bibliographie, Bibliografie">
   <meta name="keywords" lang="en" content="Ilse Aichinger, Aichinger, dial, bibliography">
@@ -52,14 +52,14 @@
         </span>
       </p>
     </td>
-    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 21.11.2020</span></i></td>
+    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 24.11.2020</span></i></td>
   </tr>
 </table>
 
     <div class="row">
       <div class="col-md-2 col-xs-2" style="padding-top: 2em; min-width: 7em;">
         <form >
-          <input type="text" v-model="query" style="width: 100%" placeholder="Suche">
+          <input type="text" v-model="query" style="width: 100%" placeholder="Titel, Person, Datum, QID">
         </form>
 
         
@@ -105,8 +105,7 @@
                   <b v-else></b>
 
                 </span>
-                <i v-if="item.author.length!=1">{{ item.author.join(' & ') }}</i>
-                <i v-else>{{ item.author.join('') }}</i>
+                <i>{{ item.author }}</i>
                 <!-- <br/><small style="background-color: yellow"><i>{{ item.ENTRYTYPE }}</i> – {{item.ID}}</small> -->
               </td>
 
@@ -125,7 +124,7 @@
                 <span v-if="item.booksubtitle">in: <i>{{ item.booktitle }}. {{ item.booksubtitle }}</i>,</span>
                 <span v-else-if="item.booktitle">in: <i>{{ item.booktitle }}</i>,</span>
                 <span v-if="item.maintitle"><i>{{item.maintitle}}</i>,</span>
-                <span v-if="item.editor">hrsg. v. {{ item.editor.join(' & ') }},</span>
+                <span v-if="item.editor">hrsg. v. {{ item.editor }},</span>
 
                 <span v-if="item.journaltitle"></span>
                 <span v-else>
@@ -187,7 +186,7 @@
 
 <script >
 var configuration = {
-  searchableFields: ['title', 'subtitle', 'booktitle', 'maintitle', 'journaltitle', 'issuetitle', 'date', 'author', 'wikidata'],
+  searchableFields: ['title', 'subtitle', 'booktitle', 'maintitle', 'journaltitle', 'issuetitle', 'date', 'author', 'editor', 'wikidata'],
   sortings: {
     date: {
       field: 'date',
