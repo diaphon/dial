@@ -19772,7 +19772,7 @@ var rows = [
  },
  {
   "wikidata": "Q56748356",
-  "pages": "S. 3",
+  "pages": "S. 69",
   "date": "1966",
   "publisher": ['Piper'],
   "location": ['München'],
