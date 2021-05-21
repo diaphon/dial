@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <meta name="author" content="Andreas Dittrich">
-  <meta name="date" content="2021-05-14"> <!-- Stand -->
+  <meta name="date" content="2021-05-21"> <!-- Stand -->
   <meta name="description" lang="de" content="Das Digitale Ilse Aichinger Literaturverzeichnis (dial) setzt sich zum Ziel, möglichst alle publizierten Texte von Ilse Aichinger (1921–2016) bibliografisch zu verzeichnen.">
   <meta name="keywords" lang="de" content="Ilse Aichinger, Aichinger, dial, Literaturverzeichnis, Personalbibliographie, Personalbibliografie, Bibliographie, Bibliografie">
   <meta name="keywords" lang="en" content="Ilse Aichinger, Aichinger, dial, bibliography">
@@ -52,7 +52,7 @@
         </span>
       </p>
     </td>
-    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 14.5.2021</span></i></td>
+    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 21.5.2021</span></i></td>
   </tr>
 </table>
 
@@ -121,8 +121,12 @@
                     <span v-else-if="item.number">Nr. {{ item.number }}</span>
                 </span>
 
-                <span v-if="item.booksubtitle">in: <i>{{ item.booktitle }}. {{ item.booksubtitle }}</i>,</span>
-                <span v-else-if="item.booktitle">in: <i>{{ item.booktitle }}</i>,</span>
+                <span v-if="item.bookauthor">
+                  <span v-if="item.bookauthor.length!=1">in: {{ item.bookauthor.join(' & ') }}: </span>
+                  <span v-else-if="item.bookauthor.length==1">in: {{ item.bookauthor.join('') }}: </span>
+                </span>
+                <span v-if="item.booksubtitle"><i>{{ item.booktitle }}. {{ item.booksubtitle }}</i>,</span>
+                <span v-else-if="item.booktitle"><i>{{ item.booktitle }}</i>,</span>
                 <span v-if="item.maintitle"><i>{{item.maintitle}}</i>,</span>
                 <span v-if="item.editor">hrsg. v. {{ item.editor }},</span>
 
