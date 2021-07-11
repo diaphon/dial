@@ -17025,9 +17025,9 @@ var rows = [
  },
  {
   "wikidata": "Q56748294",
-  "pages": "S. o.S. [31]",
-  "date": "o. J. [1972]",
-  "location": ['o. O. [Linz]'],
+  "pages": "S. [31]",
+  "date": "[1972]",
+  "location": ['[Linz]'],
   "publisher": ['Künstlervereinigung MAERZ'],
   "journalsubtitle": "[Katalog zu einer Ausstellung in der Wiener Secession 20. April bis 14. Mai 1972]",
   "journaltitle": "MAERZ. Vereinigung für Künstler und Kunstfreunde",
