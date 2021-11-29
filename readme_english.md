@@ -1,6 +1,6 @@
 # The Digital Ilse Aichinger List of Literature (`dial`)
 
-The _Digital Ilse Aichinger List of Literature_ (`dial`) aims at bibliographically listing as many published texts as possible by Ilse Aichinger (1921–2016). A complete bibliography has not yet been provided. Holdings of various archives and catalogs were searched, above all from the _Deutsches Literaturarchiv Marbach_ (`DLA`), who also funded the project within the framework of the _Forschungsverbund MWW_ with a fellowship. The `dial` thus comprises 1932 entries at the moment, 665 of which are to be understood as original publications and thus as work entities (as of February 2020).
+The _Digital Ilse Aichinger List of Literature_ (`dial`) aims at bibliographically listing as many published texts as possible by Ilse Aichinger (1921–2016). A complete bibliography has not yet been provided. Holdings of various archives and catalogs were searched, above all from the _Deutsches Literaturarchiv Marbach_ (`DLA`), who also funded the project within the framework of the _Forschungsverbund MWW_ with a fellowship. The `dial` thus comprises 2212 entries at the moment, 676 of which are to be understood as original publications and thus as work entities (as of November 2021).
 
 ## Prerequisites and how to use
 
@@ -64,20 +64,23 @@ In order to make the first publications in particular easy to query, only the un
 
 ### PDF
 
-The attached PDF export was created on 31.1.2020 per `Latexmk` (version 4.41), that is `pdfTeX` (version 3.14159265-2.6-1.40.18, `TeX Live` 2017/Debian). The consecutive numbering is only stable with this specific bib-file and should not be used as a reference.
+The attached PDF export was created on 28.11.2021 per `Latexmk` (version 4.67), that is `pdfTeX` (version 3.14159265-2.6-1.40.20, `TeX Live` 2019/Debian). The consecutive numbering is only stable with this specific bib-file and should not be used as a reference.
 
 ### HTML
 
-The `bib` file can also be searched locally in the browser with a `JavaScript`-script from _pcooksey_ [bibtex-js](https://github.com/pcooksey/bibtex-js). The most up to date version, although not stable, can be searched at <dial.aichingerhaus.at> per [ItemsJS](https://github.com/itemsapi/itemsjs/).
+The `bib` file can also be searched locally in the browser with a `JavaScript`-script from _pcooksey_ [bibtex-js](https://github.com/pcooksey/bibtex-js). The most up to date version, although not stable, can be searched at <dial.aichingerhaus.at> per [ItemsJS](https://github.com/itemsapi/itemsjs/). Likewise, the _Deutsches Literaturarchiv Marbach_ hosts an copy of _dial_ at the following address: <https://www.dla-marbach.de/fileadmin/data/repo/dial/>.
 
 ## further reading
 
 More detailed information can be found in my article „dial. Das Ilse Aichinger Literaturverzeichnis. Methoden, Quellen und eine erste Auswertung des Literaturverzeichnisses“ (in: _[digital humanities austria 2018](doi.org/10.1553/dha-proceedings2018)_, pp. 34–39) zu finden.
 
+Based on the _dial_, around one hundred publications were published in 2021 by S. Fischer under the title „Aufruf zum Mißtrauen. Verstreute Publikationen 1946-2005“ (ed. by Andreas Dittrich) and thus made more accessible. 
+
 
 ## Signe
 
-Andreas Dittrich, Wuppertal, 31.1.2020
+<!--Andreas Dittrich, Wuppertal, am 31.1.2020; aktualisiert am: -->
+Andreas Dittrich, Vienna, on the 29th of November 2021
 
 ## License
 

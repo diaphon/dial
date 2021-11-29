@@ -1,6 +1,6 @@
 # Das Digitale Ilse Aichinger Literaturverzeichnis (`dial`)
 
-Das _Digitale Ilse Aichinger Literaturverzeichnis_ (`dial`) setzt sich zum Ziel, möglichst alle publizierten Texte von Ilse Aichinger (1921–2016) bibliografisch zu verzeichnen. Eine vollständige subjektive Personalbibliografie ist bislang nicht geleistet worden.[^1] Für das `dial` wurden Bestände verschiedener Archive und Kataloge durchsucht (siehe Abschnitt [Recherchequellen](#Recherchequellen)); vor allem aber die Bestände am _Deutschen Literaturarchiv Marbach_, welches das Projekt über den _Forschungsverbund MWW_ auch mit einem Stipendium gefördert hat. Das `dial` umfasst derzeit 1932 Einträge, von denen 665 Einträge als Erstpublikationen bzw. Werkeinheiten zu verstehen sind (Stand: Februar 2020).[^2]
+Das _Digitale Ilse Aichinger Literaturverzeichnis_ (`dial`) setzt sich zum Ziel, möglichst alle publizierten Texte von Ilse Aichinger (1921–2016) bibliografisch zu verzeichnen. Eine vollständige subjektive Personalbibliografie ist bislang nicht geleistet worden.[^1] Für das `dial` wurden Bestände verschiedener Archive und Kataloge durchsucht (siehe Abschnitt [Recherchequellen](#Recherchequellen)); vor allem aber die Bestände am _Deutschen Literaturarchiv Marbach_, welches das Projekt über den _Forschungsverbund MWW_ auch mit einem Stipendium gefördert hat. Das `dial` umfasst derzeit 2212 Einträge, von denen 676 Einträge als Erstpublikationen bzw. Werkeinheiten zu verstehen sind (Stand: November 2021).[^2]
 
 ## Voraussetzungen und Verwendungsmöglichkeiten
 
@@ -65,17 +65,19 @@ Um speziell die Erstpublikationen leicht abfragbar zu machen, wurden nur die jew
 
 ### PDF
 
-Der beigefügte PDF-Export ist am 31.1.2020 per `Latexmk` (Version 4.41), bzw. `pdfTeX` (Version 3.14159265-2.6-1.40.18, `TeX Live` 2017/Debian) erzeugt worden. Die fortlaufende Nummerierung ist nur mit dieser spezifischen Bib-Datei stabil und sollte nicht als Referenz genommen werden.
+Der beigefügte PDF-Export ist am 28.11.2021 per `Latexmk` (Version 4.67), bzw. `pdfTeX` (Version 3.14159265-2.6-1.40.20, `TeX Live` 2019/Debian) erzeugt worden. Die fortlaufende Nummerierung ist nur mit dieser spezifischen Bib-Datei stabil und sollte nicht als Referenz genommen werden.
 
 
 ### HTML
 
-Die `bib`-Datei kann auch mit einem Javascript von _pcooksey_ [bibtex-js](https://github.com/pcooksey/bibtex-js) im Browser lokal durchsucht werden. Unter der Adresse <dial.aichingerhaus.at> ist eine zwar instabile, aber aktuelle und abfragbare Version des `dial` per [ItemsJS](https://github.com/itemsapi/itemsjs/) möglich.
+Die `bib`-Datei kann auch mit einem Javascript von _pcooksey_ [bibtex-js](https://github.com/pcooksey/bibtex-js) im Browser lokal durchsucht werden. Unter der Adresse <dial.aichingerhaus.at> ist eine zwar instabile, aber aktuelle und abfragbare Version des `dial` per [ItemsJS](https://github.com/itemsapi/itemsjs/) möglich. Ebenso hostet das _Deutsche Literaturarchiv Marbach_ unter der folgenden Adresse eine Kopie von _dial_: <https://www.dla-marbach.de/fileadmin/data/repo/dial/>.
 
 
 ## weiterführendes und Fußnote
 
 Ausführlichere Informationen sind in meinem Artikel „dial. Das Ilse Aichinger Literaturverzeichnis. Methoden, Quellen und eine erste Auswertung des Literaturverzeichnisses“ (in: _[digital humanities austria 2018](doi.org/10.1553/dha-proceedings2018)_, S. 34–39) zu finden.
+
+Rund hundert Publikationen wurden 2021, auf Grundlage des _dial_, im S. Fischer Verlag unter dem Titel „Aufruf zum Mißtrauen. Verstreute Publikationen 1946–2005“ (hrsg. v. Andreas Dittrich) versammelt und damit leichter zugänglich gemacht. 
 
 
 [^1]: Siehe die drei bisher ausführlichsten Personalbibliografien von: (1.) Gomboz, Ingrid: „Bibliographie Ilse Aichinger“, in: _Ilse Aichinger_, hrsg. v. Kurt Bartsch und Gerhard Melzer, Droschl: Graz 1993, S. 249–293; (2.) Reichensperger, Richard: „Bibliographie der Werke Ilse Aichingers“, in: _Ilse Aichinger. Leben und Werk. Informationen und Materialien zur Literatur_, akt. und erw. Neuausgabe, hrsg. v. Samuel Moser, 2. Aufl., S. Fischer Verlag: Frankfurt am Main 2003, S. 345–355; (3.) Karnahl, Julia: „Auswahlbibliographie“, in: _Text + Kritik. Zeitschrift für Literatur_ 175 (2007): Ilse Aichinger, hrsg. v. Roland Berbig, S. 112–115.
@@ -84,7 +86,8 @@ Ausführlichere Informationen sind in meinem Artikel „dial. Das Ilse Aichinger
 
 ## Signe
 
-Andreas Dittrich, Wuppertal, am 31.1.2020
+<!--Andreas Dittrich, Wuppertal, am 31.1.2020; aktualisiert am: -->
+Andreas Dittrich, Wien, am 29.11.2021
 
 ## Lizenz
 
