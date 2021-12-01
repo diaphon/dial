@@ -129,6 +129,7 @@
                 <span v-else-if="item.booktitle"><i>{{ item.booktitle }}</i>,</span>
                 <span v-if="item.maintitle"><i>{{item.maintitle}}</i>,</span>
                 <span v-if="item.editor">hrsg. v. {{ item.editor }},</span>
+                <span v-if="item.foreword">m. e. Vorwort v. {{ item.foreword }},</span>
 
                 <span v-if="item.journaltitle"></span>
                 <span v-else>
@@ -190,7 +191,7 @@
 
 <script >
 var configuration = {
-  searchableFields: ['title', 'subtitle', 'booktitle', 'maintitle', 'journaltitle', 'issuetitle', 'date', 'author', 'editor', 'note', 'wikidata'],
+  searchableFields: ['title', 'subtitle', 'booktitle', 'maintitle', 'journaltitle', 'issuetitle', 'date', 'author', 'bookauthor', 'editor', 'note', 'wikidata'],
   sortings: {
     date: {
       field: 'date',
