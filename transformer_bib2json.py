@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import re
+import roman
 
 with open("../../../dial.bib", "r") as fh:
 	bib = fh.read()
@@ -13,6 +14,20 @@ bib = re.sub("--","–",bib) # Bindestriche austauschen
 bib = re.sub("~"," ",bib) # Gesicherte Spaces austauschen
 bib = re.sub("\\\\&","&",bib) # Und-Zeichen austauschen
 bib = re.sub("%.+?@","@",bib, flags=re.MULTILINE|re.DOTALL) # %-Umgebung aus dial entfernen
+
+# Seitenanzahl-Skript
+def rechner(von, bibtexparser):
+	seitenanzahl = int(bis) - int(von) + 1
+	if seitenanzahl == 2:
+		entry['seiten'] = '2 Seiten'
+	elif seitenanzahl == 3:
+		entry['seiten'] = '3 Seiten'
+	elif seitenanzahl == 4:
+		entry['seiten'] = '4 Seiten'
+	elif 5 >= seitenanzahl <= 10:
+		entry['seiten'] = '5–10 Seiten'
+	elif seitenanzahl > 10:
+		entry['seiten'] = 'mehr als 10 Seiten'
 
 # BIBTEX parsen und nach JS exportieren:
 import bibtexparser
@@ -59,7 +74,23 @@ with open("dial.js", "w") as fh:
 				entry['date'] = re.sub('/',' / ',entry['date'])
 		else:
 			entry['Jahr'] = 'ohne Jahr'
-		
+
+		# Datum > Datumsangabe:
+		if 'date' in entry:
+			# Wenn Monat, Jahr
+			try:
+				dat = re.findall('(\d{4})-(\d{2})$', entry['date'])
+				mon = ['','Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
+				entry['datum'] = 'im '+mon[int(dat[0][1])]+' '+str(int(dat[0][0]))
+			except:
+				pass
+			# Wenn Tag, Monat, Jahr
+			try:
+				dat = re.findall('(\d{4})-(\d{2})-(\d{2})', entry['date'])
+				entry['datum'] = 'am '+str(int(dat[0][2]))+'.'+str(int(dat[0][1]))+'.'+dat[0][0]
+			except:
+				pass
+
 		# Publikationsform:
 		if 'ENTRYTYPE' in entry:
 			if entry['ENTRYTYPE'] ==     'article':
@@ -85,26 +116,34 @@ with open("dial.js", "w") as fh:
 
 		# Seitenanzahl:
 		if 'pages' in entry:
+			# Wenn lat. Zahlenraum (wie '2–5'):
 			if re.findall('\d+–\d+', entry['pages']):
 				entry['pages'] = 'S. ' + entry['pages']
-				nums = re.findall('(\d+)–(\d+)', entry['pages'])
-				seitenanzahl = int(nums[0][1]) - int(nums[0][0]) + 1
-				if seitenanzahl == 2:
-					entry['seiten'] = '2 Seiten'
-				elif seitenanzahl == 3:
-					entry['seiten'] = '3 Seiten'
-				elif seitenanzahl == 4:
-					entry['seiten'] = '4 Seiten'
-				elif 5 >= seitenanzahl <= 10:
-					entry['seiten'] = '5–10 Seiten'
-				elif seitenanzahl > 10:
-					entry['seiten'] = 'mehr als 10 Seiten'
+				num = re.findall('(\d+)–(\d+)', entry['pages'])
+				von = num[0][0]
+				bis = num[0][1]
+				rechner(von, bis)
+			# Wenn lat. Zahl (wie '2'):
 			elif re.findall('\d+[^–]?', entry['pages']):
 				entry['pages'] = 'S. ' + entry['pages']
 				entry['seiten'] = '1 Seite'
+			# Wenn röm. Zahlenraum (wie 'vi–vii'):
+			elif re.findall('[a-z]+–[a-z]', entry['pages'], flags=re.IGNORECASE):
+				num = re.findall('([a-z]+)–([a-z]+)', entry['pages'])
+				von = roman.fromRoman(num[0][0].upper())
+				bis = roman.fromRoman(num[0][1].upper())
+				rechner(von, bis)
+			# Wenn röm. Zahlen (wie 'vii'):
+			elif re.findall('^[a-z]+[^–]?', entry['pages'], flags=re.IGNORECASE):
+				entry['pages'] = 'S. ' + entry['pages']
+				entry['seiten'] = '1 Seite'
+			# Wenn Buchstabenkombi (wie 'A12'):
+			elif re.findall('^[a-z]\d+', entry['pages'], flags=re.IGNORECASE):
+				entry['pages'] = 'S. ' + entry['pages']
+			# sonstiges (wie '[nicht autopsiert]')
 			else:
-				entry['pages'] = 'o.S.'
-				entry['seiten'] = 'o.S.'
+				entry['pages'] = entry['pages']
+				entry['seiten'] = 'o.A.'
 		
 		# Wenn URL == ja
 		if 'url' in entry:
