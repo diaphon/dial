@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <meta name="author" content="Andreas Dittrich">
-  <meta name="date" content="2022-03-24"> <!-- Stand -->
+  <meta name="date" content="2022-04-04"> <!-- Stand -->
   <meta name="description" lang="de" content="Das Digitale Ilse Aichinger Literaturverzeichnis (dial) setzt sich zum Ziel, möglichst alle publizierten Texte von Ilse Aichinger (1921–2016) bibliografisch zu verzeichnen.">
   <meta name="keywords" lang="de" content="Ilse Aichinger, Aichinger, dial, Literaturverzeichnis, Personalbibliographie, Personalbibliografie, Bibliographie, Bibliografie">
   <meta name="keywords" lang="en" content="Ilse Aichinger, Aichinger, dial, bibliography">
@@ -52,14 +52,14 @@
         </span>
       </p>
     </td>
-    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 24.3.2022</span></i></td>
+    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 4.4.2022</span></i></td>
   </tr>
 </table>
 
     <div class="row">
       <div class="col-md-2 col-xs-2" style="padding-top: 2em; min-width: 7em;">
         <form >
-          <input type="text" v-model="query" style="width: 100%" placeholder="Titel, Person, Datum, QID">
+          <input type="text" v-model="query" style="width: 100%" placeholder="Titel, Person, Datum, QID" autofocus>
         </form>
 
         
@@ -106,7 +106,7 @@
 
                 </span>
                 <i>{{ item.author }}</i>
-                <!-- <br/><small style="background-color: yellow"><i>{{ item.ENTRYTYPE }}</i> – {{item.ID}}</small> -->
+                <span v-if="item.translator"> (Übersetzung von {{ item.translator }})</span>
               </td>
 
               <!-- 2. Spalte -->
