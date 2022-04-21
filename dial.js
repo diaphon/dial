@@ -10369,6 +10369,7 @@ var rows = [
   "number": "4",
   "volume": "66.Jg.",
   "journaltitle": "Neue Rundschau",
+  "note": "Als Dialog gesetzt.",
   "keywords": "drama",
   "subtitle": "Prosastücke",
   "title": "Hohe Warte",
