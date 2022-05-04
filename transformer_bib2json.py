@@ -47,14 +47,18 @@ with open("dial.js", "w") as fh:
 			entry['Erstpublikation'] = 'nein'
 		
 		# Genre eintragen
-		if 'keywords' not in entry:
-			# Genre aus dem Werk-Element mit selber wikidata-ID holen:
-			for entry2 in bibdb.entries:
-				if 'keywords' in entry2 and entry2['wikidata'] == entry['wikidata']:
-					entry['genre'] = entry2['keywords']
-					pass # beschleunigt vielleicht den loop
-		else:
-			entry['genre'] = entry['keywords']
+		try:
+			if 'keywords' not in entry:
+				# Genre aus dem Werk-Element mit selber wikidata-ID holen:
+				for entry2 in bibdb.entries:
+					if 'keywords' in entry2 and entry2['wikidata'] == entry['wikidata']:
+						entry['genre'] = entry2['keywords']
+						pass # beschleunigt vielleicht den loop
+			else:
+				entry['genre'] = entry['keywords']
+		except:
+			print('Wikidata-Fehler bei', entry)
+			continue
 
 		# Genre englisch > deutsch
 		entry['genre'] = re.sub('prosepoetry', 'Prosagedicht', entry['genre'])
