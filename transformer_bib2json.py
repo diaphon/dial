@@ -2,7 +2,7 @@
 import re
 import roman
 
-with open("../../../dial.bib", "r") as fh:
+with open("../dial2.bib", "r") as fh:
 	bib = fh.read()
 
 # Typographische Anpassungen:
@@ -36,36 +36,26 @@ parser = BibTexParser()
 parser.ignore_nonstandard_types = False
 bibdb = bibtexparser.loads(bib, parser)
 
-with open("dial.js", "w") as fh:
+with open("dial2.js", "w") as fh:
 	fh.write('var rows = [\n')
 	for entry in bibdb.entries:
 		fh.write(' {\n')
-		# Wenn keywords == wenn Erstpublikation:
-		if 'keywords' in entry:
-			entry['Erstpublikation'] = 'ja'
-		else:
-			entry['Erstpublikation'] = 'nein'
-		
-		# Genre eintragen
-		try:
-			if 'keywords' not in entry:
-				# Genre aus dem Werk-Element mit selber wikidata-ID holen:
-				for entry2 in bibdb.entries:
-					if 'keywords' in entry2 and entry2['wikidata'] == entry['wikidata']:
-						entry['genre'] = entry2['keywords']
-						pass # beschleunigt vielleicht den loop
-			else:
-				entry['genre'] = entry['keywords']
-		except:
-			print('Wikidata-Fehler bei', entry)
-			continue
 
-		# Genre englisch > deutsch
-		entry['genre'] = re.sub('prosepoetry', 'Prosagedicht', entry['genre'])
-		entry['genre'] = re.sub('prose', 'Prosa', entry['genre'])
-		entry['genre'] = re.sub('verse', 'Gedicht', entry['genre'])
-		entry['genre'] = re.sub('drama', 'Szene/Dialog/Hörspiel', entry['genre'])
-		entry['genre'] = re.sub('interview', 'Interview', entry['genre'])
+		if 'crossref' in entry:
+			try:
+				for entry2 in bibdb.entries:
+					if entry['crossref'] == entry2['ID']:
+						entry['booktitle'] 	= entry2['title']
+						# entry['editor'] 	= entry2['editor']
+						# entry['date'] 		= entry2['date']
+						# entry['publisher'] 	= entry2['publisher']
+						# entry['location'] 	= entry2['location']
+					else:
+						continue
+			except:
+				print('Crossref-Fehler bei "', entry['ID'], '" zu "', entry['crossref'], '"')
+				continue
+
 
 		# Datum > Jahr & Jahrzehnt:
 		if 'date' in entry:
@@ -98,13 +88,19 @@ with open("dial.js", "w") as fh:
 		# Publikationsform:
 		if 'ENTRYTYPE' in entry:
 			if entry['ENTRYTYPE'] ==     'article':
-				entry['ENTRYTYPE'] =     'Artikel'
+				entry['ENTRYTYPE'] =     '📰 Artikel'
 			elif entry['ENTRYTYPE'] == 'mvbook':
 				entry['ENTRYTYPE'] =   'mehrbändiges Buch'
 			elif entry['ENTRYTYPE'] ==   'book':
-				entry['ENTRYTYPE'] =     'Buch '
+				entry['ENTRYTYPE'] =     '📕 Buch '
+			elif entry['ENTRYTYPE'] == 'collection':
+				entry['ENTRYTYPE'] =   '📙 Sammelband'
 			elif entry['ENTRYTYPE'] == 'inbook' or entry['ENTRYTYPE'] == 'incollection':
-				entry['ENTRYTYPE'] =   'Buchbeitrag'
+				entry['ENTRYTYPE'] =   '📖 Buchbeitrag'
+			elif entry['ENTRYTYPE'] == 'suppbook':
+				entry['ENTRYTYPE'] =   '🔖 Paratext'
+			elif entry['ENTRYTYPE'] == 'thesis':
+				entry['ENTRYTYPE'] =   '📗 Diss.'
 			elif entry['ENTRYTYPE'] ==   'misc':
 				if 'howpublished' in entry:
 					entry['ENTRYTYPE'] = entry['howpublished']
@@ -117,6 +113,10 @@ with open("dial.js", "w") as fh:
 		
 		if 'volume' in entry:
 			entry['volume'] = re.sub(' Jahrgang','Jg.',entry['volume'])
+	
+		if 'keywords' in entry:
+			entry['keywords'] = re.split(',',entry['keywords'])
+			#entry['volume'] = re.sub(' Jahrgang','Jg.',entry['volume'])
 
 		# Seitenanzahl:
 		if 'pages' in entry:
@@ -149,6 +149,23 @@ with open("dial.js", "w") as fh:
 				entry['pages'] = entry['pages']
 				entry['seiten'] = 'o.A.'
 		
+		# Wenn Sprache
+		if 'language' in entry:
+			if entry['language'] == 'british':
+				entry['language'] = 'Englisch'
+			if entry['language'] == 'american':
+				entry['language'] = 'Englisch'
+			if entry['language'] == 'German':
+				entry['language'] = 'Deutsch'
+			if entry['language'] == 'french':
+				entry['language'] = 'Französisch'
+			if entry['language'] == 'italian':
+				entry['language'] = 'Italienisch'
+			if entry['language'] == 'japanese':
+				entry['language'] = 'Japanisch'
+		else:
+			entry['language'] = 'Deutsch'
+
 		# Wenn URL == ja
 		if 'url' in entry:
 			entry['urlb'] = 'ja'
@@ -182,3 +199,20 @@ with open("dial.js", "w") as fh:
 				print('Error:', entry[element])
 		fh.write(' },\n')
 	fh.write(']')
+
+# aktuelles Datum einfügen
+from datetime import date
+d1 = date.today().strftime('%Y-%m-%d') # computerlesbar
+d2 = date.today().strftime('%-d.%-m.%Y') # menschenlesbar
+with open("index.html", "r") as fh:
+	tmp = fh.read()
+	tmp = re.sub(
+		'meta name="date" content="\d{4}-\d{2}-\d{2}"',
+		'meta name="date" content="'+d1+'"',
+		tmp)
+	tmp = re.sub(
+		'Stand: \d{1,2}\.\d{1,2}\.\d{4}',
+		'Stand: '+d2,
+		tmp)
+with open("index.html", "w") as fh:
+	fh.write(tmp)
