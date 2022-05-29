@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <meta name="author" content="Andreas Dittrich">
-  <meta name="date" content="2022-05-19"> <!-- Stand -->
+  <meta name="date" content="2022-05-24"> <!-- Stand -->
   <meta name="description" lang="de" content="">
   <meta name="keywords" lang="de" content="">
   <meta name="keywords" lang="en" content="">
@@ -53,7 +53,7 @@
         </p>
         <a href="http://dial.aichingerhaus.at">> dial.aichingerhaus.at</a>
     </td>
-    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 19.5.2022</span></i>        <div>
+    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 24.5.2022</span></i>        <div>
           <span v-if="searchResult.pagination.total==1">1 Eintrag</span>
           <span v-if="searchResult.pagination.total>1">{{ searchResult.pagination.total }} Einträge</span>
         </div></td>
@@ -143,15 +143,15 @@
                 <span v-else>
 	                <span v-if="item.publisher">
 	                  <span v-if="item.publisher.length!=1">{{ item.publisher.join(' & ') }}:</span>
-	                  <span v-else-if="item.publisher.length==1">{{ item.publisher.join('') }}:</span>
+	                  <span v-else>{{ item.publisher.join() }}:</span>
 	                </span>
-                  <span e-else-if="item.institution">{{item.institution}}, </span>
-	                <span v-else><span v-else>[ohne Verlagsangabe]</span></span>
+                  <span v-else-if="item.institution">{{item.institution}}, </span>
+	                <span v-else>[ohne Verlagsangabe]</span>
                 </span>
 
                 <span v-if="item.location">{{ item.location.join(' & ') }}</span><span v-if="item.datum"> {{ item.datum }}</span><span v-else-if="item.date"> {{ item.date }}</span><span v-if="item.series"> (Reihe: {{ item.series }}<span v-if="item.number">, Bd. {{ item.number }}</span>)</span><span v-if="item.pages">, {{ item.pages }}</span><span v-if="item.issuetitle"> ({{item.issuetitle}})</span>
 
-                <span v-if="item.note" v-bind:href="item.note"  target="_blank"><br/>Anm.: <i>{{item.note}}</i></span>
+                <span v-if="item.note"><br/>Anm.: <i>{{item.note}}</i></span><span v-if="item.addendum"><br/>Anm.: <i>{{item.addendum}}</i></span>
                 <span v-if="item.url"><br/>URL: <a target="_blank" v-bind:href="item.url">{{item.url}}</a></span>
                 <span v-if="item.doi"><br/><a target="_blank" v-bind:href="item.doi">doi: {{item.doi}}</a></span>
 
@@ -172,6 +172,7 @@
                 <span v-else-if="item.ENTRYTYPE === '🔖 Paratext'">🔖</span>
                 <span v-else-if="item.ENTRYTYPE === '📙 Sammelband'">📙</span>
                 <span v-else-if="item.ENTRYTYPE === '📗 Diss.'">📗</span>
+                <span v-else-if="item.ENTRYTYPE === '〰️ sonst.'">〰️</span>
                 <span v-else><span style="font-size: smaller;">({{ item.ENTRYTYPE }})</span></span>
                 
               </td>

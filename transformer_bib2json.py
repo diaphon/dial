@@ -6,7 +6,7 @@ with open("../dial2.bib", "r") as fh:
 	bib = fh.read()
 
 # Typographische Anpassungen:
-bib = re.sub("\\\\enquote{(.+?)}",r"»\1«",bib) # Latex-Quotation austauschen
+bib = re.sub("\\\\enquote.?{(.+?)}",r"»\1«",bib) # Latex-Quotation austauschen
 bib = re.sub("\\\\emph{(.+?)}",r"\1",bib) # Latex-Quotation austauschen
 bib = re.sub("„","»",bib) # Anführungszeichen austauschen
 bib = re.sub("“","«",bib) # Abführungszeichen austauschen
@@ -107,7 +107,7 @@ with open("dial2.js", "w") as fh:
 				else:
 					print('Error: no "howpublished" field.')
 			else:
-				entry['ENTRYTYPE'] = 'sonstiges'
+				entry['ENTRYTYPE'] = '〰️ sonst.'
 		else:
 			print('Error: No "ENTRYTYPE"!')
 		
