@@ -2,11 +2,11 @@
 import re
 import roman
 
-with open("../dial2.bib", "r") as fh:
+with open("../../../dial.bib", "r") as fh:
 	bib = fh.read()
 
 # Typographische Anpassungen:
-bib = re.sub("\\\\enquote.?{(.+?)}",r"»\1«",bib) # Latex-Quotation austauschen
+bib = re.sub("\\\\enquote{(.+?)}",r"»\1«",bib) # Latex-Quotation austauschen
 bib = re.sub("\\\\emph{(.+?)}",r"\1",bib) # Latex-Quotation austauschen
 bib = re.sub("„","»",bib) # Anführungszeichen austauschen
 bib = re.sub("“","«",bib) # Abführungszeichen austauschen
@@ -36,26 +36,36 @@ parser = BibTexParser()
 parser.ignore_nonstandard_types = False
 bibdb = bibtexparser.loads(bib, parser)
 
-with open("dial2.js", "w") as fh:
+with open("dial.js", "w") as fh:
 	fh.write('var rows = [\n')
 	for entry in bibdb.entries:
 		fh.write(' {\n')
-
-		if 'crossref' in entry:
-			try:
+		# Wenn keywords == wenn Erstpublikation:
+		if 'keywords' in entry:
+			entry['Erstpublikation'] = 'ja'
+		else:
+			entry['Erstpublikation'] = 'nein'
+		
+		# Genre eintragen
+		try:
+			if 'keywords' not in entry:
+				# Genre aus dem Werk-Element mit selber wikidata-ID holen:
 				for entry2 in bibdb.entries:
-					if entry['crossref'] == entry2['ID']:
-						entry['booktitle'] 	= entry2['title']
-						# entry['editor'] 	= entry2['editor']
-						# entry['date'] 		= entry2['date']
-						# entry['publisher'] 	= entry2['publisher']
-						# entry['location'] 	= entry2['location']
-					else:
-						continue
-			except:
-				print('Crossref-Fehler bei "', entry['ID'], '" zu "', entry['crossref'], '"')
-				continue
+					if 'keywords' in entry2 and entry2['wikidata'] == entry['wikidata']:
+						entry['genre'] = entry2['keywords']
+						pass # beschleunigt vielleicht den loop
+			else:
+				entry['genre'] = entry['keywords']
+		except:
+			print('Wikidata-Fehler bei', entry)
+			continue
 
+		# Genre englisch > deutsch
+		entry['genre'] = re.sub('prosepoetry', 'Prosagedicht', entry['genre'])
+		entry['genre'] = re.sub('prose', 'Prosa', entry['genre'])
+		entry['genre'] = re.sub('verse', 'Gedicht', entry['genre'])
+		entry['genre'] = re.sub('drama', 'Szene/Dialog/Hörspiel', entry['genre'])
+		entry['genre'] = re.sub('interview', 'Interview', entry['genre'])
 
 		# Datum > Jahr & Jahrzehnt:
 		if 'date' in entry:
@@ -88,35 +98,25 @@ with open("dial2.js", "w") as fh:
 		# Publikationsform:
 		if 'ENTRYTYPE' in entry:
 			if entry['ENTRYTYPE'] ==     'article':
-				entry['ENTRYTYPE'] =     '📰 Artikel'
+				entry['ENTRYTYPE'] =     'Artikel'
 			elif entry['ENTRYTYPE'] == 'mvbook':
 				entry['ENTRYTYPE'] =   'mehrbändiges Buch'
 			elif entry['ENTRYTYPE'] ==   'book':
-				entry['ENTRYTYPE'] =     '📕 Buch '
-			elif entry['ENTRYTYPE'] == 'collection':
-				entry['ENTRYTYPE'] =   '📙 Sammelband'
+				entry['ENTRYTYPE'] =     'Buch '
 			elif entry['ENTRYTYPE'] == 'inbook' or entry['ENTRYTYPE'] == 'incollection':
-				entry['ENTRYTYPE'] =   '📖 Buchbeitrag'
-			elif entry['ENTRYTYPE'] == 'suppbook':
-				entry['ENTRYTYPE'] =   '🔖 Paratext'
-			elif entry['ENTRYTYPE'] == 'thesis':
-				entry['ENTRYTYPE'] =   '📗 Diss.'
+				entry['ENTRYTYPE'] =   'Buchbeitrag'
 			elif entry['ENTRYTYPE'] ==   'misc':
 				if 'howpublished' in entry:
 					entry['ENTRYTYPE'] = entry['howpublished']
 				else:
 					print('Error: no "howpublished" field.')
 			else:
-				entry['ENTRYTYPE'] = '〰️ sonst.'
+				entry['ENTRYTYPE'] = 'sonstiges'
 		else:
 			print('Error: No "ENTRYTYPE"!')
 		
 		if 'volume' in entry:
 			entry['volume'] = re.sub(' Jahrgang','Jg.',entry['volume'])
-	
-		if 'keywords' in entry:
-			entry['keywords'] = re.split(',',entry['keywords'])
-			#entry['volume'] = re.sub(' Jahrgang','Jg.',entry['volume'])
 
 		# Seitenanzahl:
 		if 'pages' in entry:
@@ -149,23 +149,6 @@ with open("dial2.js", "w") as fh:
 				entry['pages'] = entry['pages']
 				entry['seiten'] = 'o.A.'
 		
-		# Wenn Sprache
-		if 'language' in entry:
-			if entry['language'] == 'british':
-				entry['language'] = 'Englisch'
-			if entry['language'] == 'american':
-				entry['language'] = 'Englisch'
-			if entry['language'] == 'German':
-				entry['language'] = 'Deutsch'
-			if entry['language'] == 'french':
-				entry['language'] = 'Französisch'
-			if entry['language'] == 'italian':
-				entry['language'] = 'Italienisch'
-			if entry['language'] == 'japanese':
-				entry['language'] = 'Japanisch'
-		else:
-			entry['language'] = 'Deutsch'
-
 		# Wenn URL == ja
 		if 'url' in entry:
 			entry['urlb'] = 'ja'
@@ -199,6 +182,7 @@ with open("dial2.js", "w") as fh:
 				print('Error:', entry[element])
 		fh.write(' },\n')
 	fh.write(']')
+
 
 # aktuelles Datum einfügen
 from datetime import date
