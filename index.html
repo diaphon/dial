@@ -3,11 +3,11 @@
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <meta name="author" content="Andreas Dittrich">
-  <meta name="date" content="2022-05-31"> <!-- Stand -->
-  <meta name="description" lang="de" content="Das Digitale Ilse Aichinger Literaturverzeichnis (dial) setzt sich zum Ziel, möglichst alle publizierten Texte von Ilse Aichinger (1921–2016) bibliografisch zu verzeichnen.">
-  <meta name="keywords" lang="de" content="Ilse Aichinger, Aichinger, dial, Literaturverzeichnis, Personalbibliographie, Personalbibliografie, Bibliographie, Bibliografie">
-  <meta name="keywords" lang="en" content="Ilse Aichinger, Aichinger, dial, bibliography">
-  <title>dial. Das digitale Ilse Aichinger Literaturverzeichnis</title>
+  <meta name="date" content="2022-06-03"> <!-- Stand -->
+  <meta name="description" lang="de" content="">
+  <meta name="keywords" lang="de" content="">
+  <meta name="keywords" lang="en" content="">
+  <title>dial²</title>
 
 <!-- 
 
@@ -21,7 +21,7 @@
 
 -->
 
-<script src="dial.js"></script>
+<script src="dial2.js"></script>
 <script src="itemsjs.js"></script>
 <!-- https://cdn.rawgit.com/itemsapi/itemsjs/master/dist/itemsjs.js -->
 <script src="vue.min.js"></script>
@@ -30,8 +30,8 @@
 <!-- https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css -->
 <link rel="shortcut icon" href="./favicon.ico">
 
-</head><body>
-<noscript><div style="background: yellow; font-weight: bold; text-align: center; padding-top: 1%; padding-bottom: 1%">Leider funktioniert diese Seite nur mit JavaScript. Alternativ können sie eine PDF entweder als <a href="Dittrich_dial_2022-04-04.pdf">aktuelle</a> oder als eine archivierte Version des Verzeichnisses bei <a href="https://id.acdh.oeaw.ac.at/dial">ARCHE</a> herunterladen.<br/><br/>Unfortunately this page only works with JavaScript. Alternatively you can either download an <a href="Dittrich_dial_2022-04-04.pdf">up-to-date</a> or an archived version of the directory as PDF from <a href="https://id.acdh.oeaw.ac.at/dial">ARCHE</a>.</div></noscript>
+</head><body style="background-color:#F7EFE6;">
+<noscript><div style="background: yellow; font-weight: bold; text-align: center; padding-top: 1%; padding-bottom: 1%">Leider funktioniert diese Seite nur mit JavaScript. Alternativ können sie eine <a href="Bibl.pdf">PDF</a> herunterladen.<br/><br/>Unfortunately this page only works with JavaScript. Alternatively you can download a <a href="Bibl.pdf">PDF</a>.</div></noscript>
   
 <div id="el">
   <div class="container" style="margin-top: 50px;">
@@ -39,27 +39,31 @@
 <table style="width:100%;">
   <tr>
     <td style="width: 16.6%"><div style="display: flex; justify-content: left; align-items: left;">
-      <a href="#" v-on:click="reset()"><img alt="dial reset" src="rotary_dial.png" style="padding-right: 2em; width: 100%"></a></div>
+      <a href="#" v-on:click="reset()"><img alt="dial2 reset" src="dial2_logo.png" style="padding-right: 2em; width: 100%"></a></div>
     </td>
     <td style="padding-left: 1em;">
-      <a href="#" v-on:click="reset()"><h1 style="color: #0b477c;">dial.</h1></a><br/>
-      <p style="font-size: 1em;color: gray;">das digitale ilse aichinger literaturverzeichnis
+      <a href="#" v-on:click="reset()"><h1 style="color: #0b477c;">dial²</h1></a><br/>
+      <p style="font-size: 1em;color: gray;">digitales Literaturverzeichnis von Texten zu Ilse Aichinger
         <span style="font-size: 1em;color: gray; padding-left: 1em;">
           <i>
-            <b>gamma</b><br/>
+            <br/> <b style="background-color:yellow; text-decoration: underline;">pre-ALPHA!<br/> noch in Entwicklung</b><br/>
             <span style="font-size: .8em;">zusammengestellt von Andreas Dittrich</span>
           </i>
         </span>
-      </p>
+        </p>
+        <a href="http://dial.aichingerhaus.at">> dial.aichingerhaus.at</a>
     </td>
-    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 31.5.2022</span></i></td>
+    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 3.6.2022</span></i>        <div>
+          <span v-if="searchResult.pagination.total==1">1 Eintrag</span>
+          <span v-if="searchResult.pagination.total>1">{{ searchResult.pagination.total }} Einträge</span>
+        </div></td>
   </tr>
 </table>
 
     <div class="row">
       <div class="col-md-2 col-xs-2" style="padding-top: 2em; min-width: 7em;">
         <form >
-          <input type="text" v-model="query" style="width: 100%" placeholder="Titel, Person, Datum, QID" autofocus>
+          <input type="text" v-model="query" style="width: 100%" placeholder="Titel, Person, Datum, …" autofocus>
         </form>
 
         
@@ -88,45 +92,47 @@
           	<tr style="border-bottom:2pt dotted black;">
               <th>Titel</th>
               <th>erschienen in</th>
+              <th style="width: 5em;">Form</th>
               <th style="width: 10em;">Datum</th>
-              <th style="width: 9em;">Wikidata-ID</th>
+              <th style="width: 10em;">Anlass</th>
             </tr>
 
-            <tr v-for="item of searchResult.data.items">
+            <tr v-for="item of searchResult.data.items" style="background-color:#f3f3f3;">
 
               <!-- 1. Spalte -->
-              <td>
+<!--               <td>
                 <span style="color: #0b477c;">
-
-                  <b v-if="item.subtitle">{{ item.title }} <br/> {{ item.subtitle }}</b>
-                  <b v-else>{{ item.title }}</b><br/>
-
-                  <b v-if="item.keywords" style="color: green;">(Erstpublikation)<br/></b>
-                  <b v-else></b>
-
+                  <span v-if="item.author"><b>{{ item.author }}</b>: </span>
+                  <span v-if="item.ENTRYTYPE === 'Sammelband'"><b v-if="item.editor">{{ item.editor }}</b> (Hg.): </span>
                 </span>
-                <i>{{ item.author }}</i>
-                <span v-if="item.translator"> (Übersetzung von {{ item.translator }})</span>
+                <span v-if="item.subtitle"><i>{{ item.title }}. {{ item.subtitle }}</i></span>
+                <span v-else><i>{{ item.title }}</i></span><br/>
+              </td> -->
+
+              <td>
+                <span v-if="item.author"><b style="color: #0b477c;">{{item.author}}</b>: 
+                  <span v-if="item.subtitle"><i>{{ item.title }}. {{ item.subtitle }}</i></span>
+                  <span v-else><i>{{ item.title }}</i></span>
+                </span>
+                <span v-else-if="item.editor" style="color: #0b477c;">
+                  <i><b>{{ item.title }}</b><span v-if="item.subtitle">. {{item.subtitle}}</span></i></span>
+                <span v-else>{{item.author}}: {{item.title}}</span><br/>
               </td>
+
+
 
               <!-- 2. Spalte -->
               <td>
-                <span v-if="item.ENTRYTYPE === 'Artikel'">📰</span>
-                <span v-else-if="item.ENTRYTYPE === 'Buchbeitrag'">📖</span>
-                <span v-else-if="item.ENTRYTYPE === 'Buch '">📕</span>
-                <span v-else><span style="font-size: smaller;">({{ item.ENTRYTYPE }})</span></span>
-
-                <span v-if="item.journaltitle">in:<i> {{ item.journaltitle }}</i><span v-if="item.issuetitle"><i>. {{ item.issuetitle }}</i>, </span><span v-else>.</span>
+                <span v-if="item.journaltitle">in:<i> {{ item.journaltitle }}<span v-if="item.journalsubtitle">. {{ item.journalsubtitle }}</span></i><span v-if="item.issuetitle"><i>. {{ item.issuetitle }}</i>, </span><span v-else>.</span>
                     <span v-if="item.volume">{{ item.volume }}<span v-if="item.number">/{{ item.number }},</span></span>
-                    <span v-else-if="item.number">Nr. {{ item.number }}</span>
+                    <span v-else-if="item.number">Nr. {{ item.number }},</span>
                 </span>
 
                 <span v-if="item.bookauthor">
                   <span v-if="item.bookauthor.length!=1">in: {{ item.bookauthor.join(' & ') }}: </span>
                   <span v-else-if="item.bookauthor.length==1">in: {{ item.bookauthor.join('') }}: </span>
                 </span>
-                <span v-if="item.booktitleaddon"><i>{{ item.booktitle }}. {{ item.booksubtitle }}. {{ item.booktitleaddon }}</i>,</span>
-                <span v-else-if="item.booksubtitle"><i>{{ item.booktitle }}. {{ item.booksubtitle }}</i>,</span>
+                <span v-if="item.booksubtitle"><i>{{ item.booktitle }}. {{ item.booksubtitle }}</i>,</span>
                 <span v-else-if="item.booktitle"><i>{{ item.booktitle }}</i>,</span>
                 <span v-if="item.maintitle"><i>{{item.maintitle}}</i>,</span>
                 <span v-if="item.editor">hrsg. v. {{ item.editor }},</span>
@@ -137,31 +143,58 @@
                 <span v-else>
 	                <span v-if="item.publisher">
 	                  <span v-if="item.publisher.length!=1">{{ item.publisher.join(' & ') }}:</span>
-	                  <span v-else-if="item.publisher.length==1">{{ item.publisher.join('') }}:</span>
+	                  <span v-else>{{ item.publisher.join() }}:</span>
 	                </span>
-	                <span v-else><span v-else>[ohne Verlagsangabe]</span></span>
+                  <span v-else-if="item.institution">{{item.institution}}, </span>
+	                <span v-else>[ohne Verlagsangabe]</span>
                 </span>
 
-                <span v-if="item.location">{{ item.location.join(' & ') }}</span><span v-if="item.datum"> {{ item.datum }}</span><span v-else-if="item.date"> {{ item.date }}</span><span v-if="item.pages">, {{ item.pages }}</span>
+                <span v-if="item.location">{{ item.location.join(' & ') }}</span><span v-if="item.datum"> {{ item.datum }}</span><span v-else-if="item.date"> {{ item.date }}</span><span v-if="item.series"> (Reihe: {{ item.series }}<span v-if="item.number">, Bd. {{ item.number }}</span>)</span><span v-if="item.pages">, {{ item.pages }}</span><span v-if="item.issuetitle"> ({{item.issuetitle}})</span>
 
-                <span v-if="item.note" v-bind:href="item.note"><br/>Anm.: <i>{{ item.note }}</i></span>
-                <span><a v-if="item.url" v-bind:href="item.url"><br/>{{ item.url }}</a></span>
+                <span v-if="item.note"><br/>Anm.: <i>{{item.note}}</i></span><span v-if="item.addendum"><br/>Anm.: <i>{{item.addendum}}</i></span>
+                <span v-if="item.url"><br/>URL: <a target="_blank" v-bind:href="item.url">{{item.url}}</a></span>
+                <span v-if="item.doi"><br/><a target="_blank" v-bind:href="item.doi">doi: {{item.doi}}</a></span>
+
+                <span v-if="item.isbn"><br/><a target="_blank" v-bind:href="'https://portal.dnb.de/opac.htm?referrer=IlseAichingerSekLit&method=enhancedSearch&index=num&operator=and&term='+ item.isbn">ISBN: {{ item.isbn }}</a></span>
+                <span v-if="item.issn"><br/><a target="_blank" v-bind:href="'https://zdb-katalog.de/list.xhtml?t=%22'+ item.issn +'%22&key=cql'">ISSN: {{ item.issn }}</a></span>
+                <span v-if="item.oclc"><br/><a target="_blank" v-bind:href="'https://zdb-katalog.de/list.xhtml?t=%22'+ item.oclc +'%22&key=cql'">OCLC-Nr.: {{ item.oclc }}</a></span>
+                <span v-if="item.dnb"><br/><a target="_blank" v-bind:href="'https://d-nb.info/'+ item.dnb">DNB: {{ item.dnb }}</a></span>
+
               </td>
 
+
               <!-- 3. Spalte -->
-              <td style="word-wrap:break-word;">{{ item.date }}</td>
+
+              <td>
+                <span v-if="item.ENTRYTYPE === '📰 Artikel'">📰</span>
+                <span v-else-if="item.ENTRYTYPE === '📖 Buchbeitrag'">📖</span>
+                <span v-else-if="item.ENTRYTYPE === '📕 Buch '">📕</span>
+                <span v-else-if="item.ENTRYTYPE === '🔖 Paratext'">🔖</span>
+                <span v-else-if="item.ENTRYTYPE === '📙 Sammelband'">📙</span>
+                <span v-else-if="item.ENTRYTYPE === '📗 Diss.'">📗</span>
+                <span v-else-if="item.ENTRYTYPE === '〰️ sonst.'">〰️</span>
+                <span v-else><span style="font-size: smaller;">({{ item.ENTRYTYPE }})</span></span>
+                
+              </td>
 
               <!-- 4. Spalte -->
-              <td><a v-bind:href="'https://www.wikidata.org/wiki/' + item.wikidata" target="_blank">{{ item.wikidata }}</a></td>
+              <td style="word-wrap:break-word;">{{ item.date }}</td>
+
+              <!-- 5. Spalte -->
+              <td>
+                <span v-for="value in item.keywords">
+                  <span v-if="value.match(/^Q.+/)">
+                    <a target="_blank" v-bind:href="'https://www.wikidata.org/wiki/'+value">{{value}}<br/></a></span>
+                  <span v-else>{{value}}</br></span>
+                </span>
+              </span>
+            </td>
+                <!--{{ item.keywords.join(', ') }}</span></td>-->
+</span>
           
           </tr>
           </tbody>
         </table>
-
-        <div style="text-align:right;">
-        	<span v-if="searchResult.pagination.total==1">1 Eintrag</span>
-          <span v-if="searchResult.pagination.total>1">{{ searchResult.pagination.total }} Einträge</span>
-        </div>
         
         <div class="clearfix"></div>
       </div>
@@ -170,18 +203,7 @@
     </div>
   <div style="font-size: 0.8em; text-align: right; padding-bottom: 4em; padding-left: 50%;">
   <br/><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 <img alt="" style="height: 1.2em;" src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Cc.logo.circle.svg"/><img alt="" style="height: 1.2em;" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Cc-by_new.svg"/></a> Andreas Dittrich
-  <br/>see Dittrich, Andreas: <a href="https://epub.oeaw.ac.at/0xc1aa5576_0x003b3987.pdf">"dial. Das Digitale Ilse Aichinger Literaturverzeichnis. Methoden, Quellen und eine erste Auswertung des Literaturverzeichnisses"</a>, in: <i>digital humanities austria 2018</i>, DOI:<a href="https://doi.org/10.1553/dha-proceedings2018s34">10.1553/dha-proceedings2018s34</a>
-  <br/>sponsored by <a href="https://mww-forschung.de/">Forschungsverbund MWW / DLA Marbach</a>
-  <br/>scripts and readme at <a href="https://github.com/diaphon/dial">github.com/diaphon/dial</a>,
-  <br/>website based on <a href="https://github.com/itemsapi/itemsjs/">ItemsJS</a> (Apache License 2.0)
-  <br/>adapted with the help of <a href="https://github.com/bellerophons-pegasus">Martina Trognitz</a>
-  <br/>and <a href="https://www.editionen.uni-wuppertal.de/de/personen/kollegiatinnen-und-kollegiaten/politycki-bastian.html">Bastian Politycki</a> (@<a href="https://www.editionen.uni-wuppertal.de">GRK 2196</a>)
-  <br/>archived at <a href="https://id.acdh.oeaw.ac.at/dial">ARCHE</a> at <a href="https://acdh.oeaw.ac.at/">ACDH-CH</a>
-  <br/>Wikidata item-ID: <a href="https://www.wikidata.org/wiki/Q54007056">Q54007056</a>
-  <br/>thanks to <a href="https://github.com/diaphon/dial/blob/master/readme.md">all supporters</a>!
-  <br/><br/>
-  Andreas Dittrich,<br/>
-  <a href="https://www.dla-marbach.de/impressum/">Impressum</a> und <a href="https://www.dla-marbach.de/datenschutzerklaerung/">Datenschutzerklärung</a> des <i>DLA Marbach</i>
+  <br/>Die Einträge wurden zunächst aus den Bibliografien von Richard Reichensperger (in: <i>Ilse Aichinger, Leben und Werk</i>, hrsg. von Samuel Moser, Fischer-Taschenbuch-Verlag: Frankfurt am Main, akt. u. erw. Neuaufl. 2003), zweier  „Auswahlbibliografien“ (in: <i>„Was wir einsetzen können, ist Nüchternheit“ : zum Werk Ilse Aichingers</i>, hrsg. von Britta Herrmann und Barbara Thums, Würzburg: Königshausen & Neumann 2001; und von Julia Karnahl, in: Text+Kritik, Nr. 175. Ilse Aichinger, VII/2007, S. 112--115) übernommen, zum größten Teil autopsiert, korrigiert und durch eigene Recherchen erweitert.</i>
   </div>
 
   </div>
@@ -193,7 +215,7 @@
 
 <script >
 var configuration = {
-  searchableFields: ['title', 'subtitle', 'booktitle', 'booksubtitle', 'booktitleaddon', 'maintitle', 'journaltitle', 'issuetitle', 'date', 'author', 'bookauthor', 'editor', 'foreword', 'afterword', 'note', 'wikidata'],
+  searchableFields: ['title', 'subtitle', 'booktitle', 'booksubtitle', 'maintitle', 'booktitleaddon', 'journaltitle', 'issuetitle', 'date', 'author', 'bookauthor', 'editor', 'foreword', 'afterword', 'note', 'keywords'],
   sortings: {
     date: {
       field: 'date',
@@ -202,53 +224,54 @@ var configuration = {
   },
   // FACETTIERUNG:
   aggregations: {
-    Erstpublikation: {
-    	title: 'Erstpublikation',
-      order: 'asc',
-    	size: 2
-    },
     ENTRYTYPE: {
       title: 'Publikationsform',
       order: 'desc',
       conjunction: false,
-      size: 5
+      size: 7
     },
-	  Jahrzehnt: {
+    Jahrzehnt: {
       title: 'Jahrzehnt',
       order: 'asc',
       sort: 'term',
       conjunction: false,
       size: 10
     },
+    keywords: {
+      title: 'Anlass',
+      order: 'desc',
+      conjunction: false,
+      size: 15
+    },
+    publisher: {
+      title: 'Verlag',
+      conjunction: false,
+      size: 5
+    },
+    journaltitle: {
+      title: 'Zeitung / Zeitschrift',
+      conjunction: false,
+      size: 5
+    },
+    language: {
+      title: 'Sprache',
+      conjunction: false,
+      size: 4,
+    },
+    author: {
+      title: 'Autorschaft',
+      conjunction: false,
+      size: 3,
+    },
     location: {
       title: 'Ort',
       conjunction: false,
       size: 10
     },
-    journaltitle: {
-      title: 'Zeitung / Zeitschrift',
-      conjunction: false,
-      size: 10
-    },
-    publisher: {
-      title: 'Verlag',
-      conjunction: false,
-      size: 10
-    },
-    genre: {
-      title: 'Gattung',
-      conjunction: false,
-      size: 5
-    },
-    author: {
-      title: 'Autorschaft',
-      conjunction: false,
-      size: 5,
-    },
     series: {
       title: 'Serie',
       conjunction: false,
-      size: 7,
+      size: 5,
     },
     seiten: {
       title: 'Seitenanzahl',
