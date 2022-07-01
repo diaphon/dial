@@ -2132,7 +2132,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 7/5/5",
   "number": "183/184/185",
   "date": "1949-08-07 / 1949-08-10",
@@ -2154,7 +2154,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "urldate": "2018-04-23",
   "url": "https://volltext.merkur-zeitschrift.de/article/mr_1952_01_0070-0077_0070_01",
   "pages": "S. 70–77",
@@ -2179,7 +2179,7 @@ var rows = [
   "urlb": "ja",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 49–63",
   "location": ['Wien'],
   "addendum": "undatiert",
@@ -2202,7 +2202,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "[ohne Seitenangabe]",
   "date": "1952-05-30",
   "location": ['[Frankfurt am Main]'],
@@ -2221,7 +2221,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 61–73",
   "date": "1953",
   "location": ['Frankfurt am Main'],
@@ -2242,7 +2242,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 44–53",
   "publisher": ['S. Fischer Verlag'],
   "location": ['Frankfurt am Main'],
@@ -2263,7 +2263,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 815–821",
   "date": "1958",
   "location": ['Wien'],
@@ -2283,7 +2283,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 130–136",
   "date": "1962",
   "publisher": ['Stiasny'],
@@ -2302,7 +2302,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 156–162",
   "date": "1962",
   "publisher": ['Rowohlt'],
@@ -2321,7 +2321,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 213–222",
   "edition": "2",
   "date": "1962",
@@ -2341,7 +2341,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 238–245",
   "date": "1962-12",
   "publisher": ['Fischer Bücherei'],
@@ -2361,7 +2361,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 9–18",
   "date": "1963",
   "publisher": ['S. Fischer Verlag'],
@@ -2383,7 +2383,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 213–222",
   "edition": "3",
   "date": "1964",
@@ -2403,7 +2403,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 156",
   "date": "1964",
   "publisher": ['Rowohlt'],
@@ -2423,7 +2423,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 169–177",
   "date": "1965-10",
   "publisher": ['München'],
@@ -2444,7 +2444,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 47–56",
   "date": "1966",
   "location": ['Oxford', 'London', 'Edinburgh', 'New York', 'Toronto', 'Paris', 'Braunschweig'],
@@ -2464,7 +2464,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 193–203",
   "date": "1969",
   "location": ['Berlin'],
@@ -2485,7 +2485,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 41–48",
   "date": "1970-11",
   "publisher": ['Fischer Bücherei'],
@@ -2505,7 +2505,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 185–193",
   "date": "1972",
   "publisher": ['München'],
@@ -2525,7 +2525,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 21–28",
   "date": "1976",
   "location": ['Wien', 'Hamburg'],
@@ -2545,7 +2545,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 205–213",
   "location": ['Horn'],
   "publisher": ['Buchdruckerei Ferdinand Berger & Söhne OHG'],
@@ -2564,7 +2564,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 60–66",
   "location": ['Braunschweig'],
   "publisher": ['Waisenhaus-Buchdruckerei und Verlag'],
@@ -2584,7 +2584,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 101–109",
   "location": ['München'],
   "publisher": ['Wilhelm Fink'],
@@ -2603,7 +2603,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 43–53",
   "publisher": ['Gustav Kiepenheuer Verlag'],
   "date": "1979",
@@ -2624,7 +2624,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 21–28",
   "date": "1980",
   "location": ['München'],
@@ -2643,7 +2643,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 242–249",
   "date": "1981",
   "location": ['Frankfurt am Main'],
@@ -2662,7 +2662,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 790–795",
   "date": "1982",
   "publisher": ['Athenäum Verlag'],
@@ -2680,7 +2680,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 49–57",
   "date": "1983-11",
   "note": "Zum 75. Geburtstag von Hans Werner Richter.",
@@ -2700,7 +2700,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 283–292",
   "publisher": ['Residenz Verlag'],
   "location": ['Salzburg', 'Wien'],
@@ -2718,7 +2718,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 149–160",
   "publisher": ['Insel-Verlag'],
   "location": ['Frankfurt am Main'],
@@ -2738,7 +2738,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 242–249",
   "date": "1986",
   "location": ['Frankfurt am Main'],
@@ -2758,7 +2758,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 274–283",
   "publisher": ['S. Fischer Verlag'],
   "location": ['Frankfurt am Main'],
@@ -2776,7 +2776,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 372–379",
   "publisher": ['Heyne Verlag'],
   "location": ['München'],
@@ -2794,7 +2794,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 283–292",
   "publisher": ['Deutscher Taschenbuch Verlag'],
   "location": ['München'],
@@ -2813,7 +2813,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 41–52",
   "publisher": ['Suhrkamp Publishers New York'],
   "location": ['New York'],
@@ -2833,7 +2833,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 72–79",
   "date": "1988",
   "location": ['Berlin'],
@@ -2852,7 +2852,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 199–206",
   "editor": "Karl Hinteregger",
   "publisher": ['Internationale Mediziner Arbeitsgemeinschaft'],
@@ -2870,7 +2870,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 48–49",
   "date": "1988",
   "location": ['Bremerhaven'],
@@ -2891,7 +2891,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 63–74",
   "date": "1989",
   "location": ['Frankfurt am Main'],
@@ -2912,7 +2912,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 63–74",
   "date": "1991",
   "publisher": ['Fischer Taschenbuch Verlag'],
@@ -2933,7 +2933,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 480–488",
   "date": "1995",
   "publisher": ['Deutscher Taschenbuch Verlag'],
@@ -2952,7 +2952,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 64–75",
   "date": "1997-06",
   "location": ['München'],
@@ -2972,7 +2972,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 48–49",
   "date": "1999",
   "location": ['Bremerhaven'],
@@ -2993,7 +2993,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 56–68",
   "date": "2003",
   "publisher": ['Reclam'],
@@ -3012,7 +3012,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 189-198",
   "date": "2005",
   "location": ['Frankfurt am Main', 'Leipzig'],
@@ -3033,7 +3033,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 395–405",
   "date": "2007",
   "location": ['Stuttgart'],
@@ -3053,7 +3053,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 526 ff.",
   "date": "2007",
   "location": ['Düsseldorf'],
@@ -3073,7 +3073,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 249–258",
   "edition": "1",
   "date": "2010",
@@ -3092,7 +3092,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 249–258",
   "date": "2012",
   "publisher": ['Insel-Verlag'],
@@ -3110,7 +3110,7 @@ var rows = [
   "urlb": "nein",
  },
  {
-  "wikidata": "Q56748158",
+  "wikidata": "Q2165959",
   "pages": "S. 30",
   "location": ['Hamburg'],
   "date": "2020-12-07",
