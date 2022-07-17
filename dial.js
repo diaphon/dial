@@ -41217,7 +41217,7 @@ var rows = [
  {
   "wikidata": "Q56748623",
   "pages": "S. 47–57",
-  "date": "1995",
+  "date": "1995 [1986]",
   "publisher": ['S. Fischer Verlag'],
   "location": ['Frankfurt am Main'],
   "number": "12782",
