@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <meta name="author" content="Andreas Dittrich">
-  <meta name="date" content="2022-09-23"> <!-- Stand -->
+  <meta name="date" content="2022-11-03"> <!-- Stand -->
   <meta name="description" lang="de" content="Das Digitale Ilse Aichinger Literaturverzeichnis (dial) setzt sich zum Ziel, möglichst alle publizierten Texte von Ilse Aichinger (1921–2016) bibliografisch zu verzeichnen.">
   <meta name="keywords" lang="de" content="Ilse Aichinger, Aichinger, dial, Literaturverzeichnis, Personalbibliographie, Personalbibliografie, Bibliographie, Bibliografie">
   <meta name="keywords" lang="en" content="Ilse Aichinger, Aichinger, dial, bibliography">
@@ -52,7 +52,7 @@
         </span>
       </p>
     </td>
-    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 23.9.2022</span></i></td>
+    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 3.11.2022</span></i></td>
   </tr>
 </table>
 
@@ -116,7 +116,7 @@
                 <span v-else-if="item.ENTRYTYPE === 'Buch '">📕</span>
                 <span v-else><span style="font-size: smaller;">({{ item.ENTRYTYPE }})</span></span>
 
-                <span v-if="item.journaltitle">in:<i> {{ item.journaltitle }}</i><span v-if="item.journalsubtitle">. {{item.journalsubtitle}}</span><span v-if="item.issuetitle"><i>. {{ item.issuetitle }}</i>, </span><span v-else>.</span>
+                <span v-if="item.journaltitle">in:<i> {{ item.journaltitle }}</i><span v-if="item.journalsubtitle">. {{item.journalsubtitle}}</span><span v-if="item.issuetitle"><i>. {{ item.issuetitle }}<span v-if="item.issuesubtitle">. {{ item.issuesubtitle }}</span></i>, </span><span v-else>.</span>
                     <span v-if="item.volume">{{ item.volume }}<span v-if="item.number">/{{ item.number }},</span></span>
                     <span v-else-if="item.number">Nr. {{ item.number }}</span>
                 </span>
