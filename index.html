@@ -117,7 +117,7 @@
                 <span v-else><span style="font-size: smaller;">({{ item.ENTRYTYPE }})</span></span>
 
                 <span v-if="item.journaltitle">in:<i> {{ item.journaltitle }}</i><span v-if="item.journalsubtitle">. {{item.journalsubtitle}}</span><span v-if="item.issuetitle"><i>. {{ item.issuetitle }}<span v-if="item.issuesubtitle">. {{ item.issuesubtitle }}</span></i>, </span><span v-else>.</span>
-                    <span v-if="item.volume">{{ item.volume }}<span v-if="item.number">/{{ item.number }},</span></span>
+                    <span v-if="item.volume">{{ item.volume }}.&nbsp;Jg.<span v-if="item.number"> / Nr.&nbsp;{{ item.number }},</span></span>
                     <span v-else-if="item.number">Nr. {{ item.number }}</span>
                 </span>
 
