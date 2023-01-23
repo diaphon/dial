@@ -5647,12 +5647,12 @@ var rows = [
  },
  {
   "wikidata": "Q56748173",
-  "note": "Illustrationen von Hans Fronius, Umschlag von Romulus Candea",
   "pages": "S. 5–7",
   "location": ['Wien'],
   "addendum": "undatiert",
   "date": "1952",
   "publisher": ['Jungbrunnenverlag'],
+  "note": "Illustrationen von Hans Fronius, Umschlag von Romulus Candea. Der Text ist gezeichnet mit: »Ulm, im Frühjahr 1951«.",
   "number": "6",
   "editor": "Hans Weigel",
   "booktitle": "Rede unter dem Galgen",
