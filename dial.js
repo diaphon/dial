@@ -9031,7 +9031,7 @@ var rows = [
  },
  {
   "wikidata": "Q56748178",
-  "pages": "[nicht autopsiert]",
+  "pages": "S. 127–131",
   "date": "1991",
   "location": ['Frankfurt am Main'],
   "publisher": ['Fischer-Taschenbuch-Verlag'],
@@ -9049,7 +9049,7 @@ var rows = [
   "genre": "Prosa",
   "Jahr": "1991",
   "Jahrzehnt": "1990er",
-  "seiten": "o.A.",
+  "seiten": "5–10 Seiten",
   "urlb": "nein",
  },
  {
@@ -9752,6 +9752,7 @@ var rows = [
  },
  {
   "wikidata": "Q56748181",
+  "note": "Mit einer portugiesischen Übersetzung von Maria António Ferreira Hörster. Als Quellenangabe wird »Akzente 34 (1987), H. 5, S. 385–386« angegeben (S. 14); als Copyright der S. Fischer Verlag, der den Abdruck genehmigt habe.",
   "pages": "S. 12",
   "date": "1995",
   "number": "23/24",
@@ -9886,6 +9887,7 @@ var rows = [
  },
  {
   "wikidata": "Q56748182",
+  "note": "Mit einer portugiesischen Übersetzung von Maria António Ferreira Hörster. Als Quellenangabe wird »Akzente 34 (1987), H. 5, S. 385–386« angegeben (S. 14); als Copyright der S. Fischer Verlag, der den Abdruck genehmigt habe.",
   "pages": "S. 14",
   "date": "1995",
   "number": "23/24",
@@ -10292,7 +10294,7 @@ var rows = [
   "editor": "Michael Krüger",
   "journalsubtitle": "Zeitschrift für Literatur",
   "journaltitle": "Akzente",
-  "note": "Ohne Titel und in drei Absätzen gesetzt (jeweils beginnend mit »Auch am Karfreitag«, »Wer wird« und »Sorgfältig«).",
+  "note": "In drei Absätzen gesetzt (jeweils beginnend mit »Auch am Karfreitag«, »Wer wird« und »Sorgfältig«).",
   "subtitle": "Orte",
   "title": "Philippshof",
   "author": "Ilse Aichinger",
@@ -10308,6 +10310,7 @@ var rows = [
  },
  {
   "wikidata": "Q56748187",
+  "note": "In drei Absätzen gesetzt (jeweils beginnend mit »Auch am Karfreitag«, »Wer wird« und »Sorgfältig«). Mit einer portugiesischen Übersetzung von Maria António Ferreira Hörster. Als Quellenangabe wird »Akzente 34 (1987), H. 5, S. 385–386« angegeben (S. 14); als Copyright der S. Fischer Verlag, der den Abdruck genehmigt habe. ",
   "pages": "S. 12–14",
   "date": "1995",
   "number": "23/24",
@@ -10681,7 +10684,6 @@ var rows = [
  },
  {
   "wikidata": "Q56748191",
-  "note": "Als Prosa ohne Titel in drei Absätzen gesetzt.",
   "pages": "S. 278",
   "date": "1954",
   "number": "3",
@@ -10691,6 +10693,7 @@ var rows = [
   "editor": "Michael Krüger",
   "journalsubtitle": "Zeitschrift für Literatur",
   "journaltitle": "Akzente",
+  "note": "Als Prosa ohne Titel in drei Absätzen gesetzt.",
   "subtitle": "Straßen und Plätze",
   "title": "[Parkring]",
   "author": "Ilse Aichinger",
