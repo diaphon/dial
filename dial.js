@@ -15994,7 +15994,7 @@ var rows = [
  },
  {
   "wikidata": "Q56748245",
-  "pages": "S. 122–125",
+  "pages": "S. 133–140",
   "date": "1991",
   "publisher": ['Fischer Taschenbuch Verlag'],
   "location": ['Frankfurt am Main'],
@@ -16002,7 +16002,6 @@ var rows = [
   "maintitle": "Werke in acht Bänden",
   "booktitle": "Werke. Zu keiner Stunde. Szenen und Dialoge",
   "bookauthor": ['Ilse Aichinger'],
-  "subtitle": "für Nelly Sachs",
   "title": "Weiße Chrysanthemen",
   "author": "Ilse Aichinger",
   "ENTRYTYPE": "Buchbeitrag",
@@ -16011,7 +16010,6 @@ var rows = [
   "genre": "Szene/Dialog/Hörspiel",
   "Jahr": "1991",
   "Jahrzehnt": "1990er",
-  "seiten": "4 Seiten",
   "urlb": "nein",
  },
  {
