@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <meta name="author" content="Andreas Dittrich">
-  <meta name="date" content="2023-05-08"> <!-- Stand -->
+  <meta name="date" content="2023-05-09"> <!-- Stand -->
   <meta name="description" lang="de" content="Das Digitale Ilse Aichinger Literaturverzeichnis (dial) setzt sich zum Ziel, möglichst alle publizierten Texte von Ilse Aichinger (1921–2016) bibliografisch zu verzeichnen.">
   <meta name="keywords" lang="de" content="Ilse Aichinger, Aichinger, dial, Literaturverzeichnis, Personalbibliographie, Personalbibliografie, Bibliographie, Bibliografie">
   <meta name="keywords" lang="en" content="Ilse Aichinger, Aichinger, dial, bibliography">
@@ -52,14 +52,14 @@
         </span>
       </p>
     </td>
-    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 8.5.2023</span></i></td>
+    <td style="padding-top: 5em;text-align:right;"><i><span style="color: gray;">Stand: 9.5.2023</span></i></td>
   </tr>
 </table>
 
     <div class="row">
       <div class="col-md-2 col-xs-2" style="padding-top: 2em; min-width: 7em;">
         <form >
-          <input type="text" v-model="query" style="width: 100%" placeholder="Titel, Person, Datum, QID" autofocus>
+          <input type="text" v-model="query" style="width: 100%" placeholder="Titel, Person, Datum, QID" autofocus="autofocus" id="Suchfeld">
         </form>
 
         
@@ -164,7 +164,7 @@
           <span v-if="searchResult.pagination.total>1">{{ searchResult.pagination.total }} Einträge</span>
         </div>
 
-        <div style="margin-top:2em;">Zitierempfehlung: <br/><i>dial. Digitales Ilse Aichinger Literaturverzeichnis</i>, zusammengestellt von Andreas Dittrich, <a href="#"><script>document.write(window.location.href)</script></a>, Stand: 8.5.2023 (Zugriff am <script>document.write(new Date().toLocaleDateString())</script>).</div>
+        <div style="margin-top:2em;">Zitierempfehlung: <br/><i>dial. Digitales Ilse Aichinger Literaturverzeichnis</i>, zusammengestellt von Andreas Dittrich, <a href="#"><script>document.write(window.location.href)</script></a>, Stand: 9.5.2023 (Zugriff am <script>document.write(new Date().toLocaleDateString())</script>).</div>
 
         <div class="clearfix"></div>
       </div>
@@ -314,6 +314,11 @@ var vm = new Vue({
     }
   }
 });
+
+window.onload = function() {  
+  var input = document.getElementById("Suchfeld").focus();
+}
+
 </script>
 </body>
 </html>
