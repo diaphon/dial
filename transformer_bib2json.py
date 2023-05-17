@@ -61,11 +61,15 @@ with open("dial.js", "w") as fh:
 			continue
 
 		# Genre englisch > deutsch
-		entry['genre'] = re.sub('prosepoetry', 'Prosagedicht', entry['genre'])
-		entry['genre'] = re.sub('prose', 'Prosa', entry['genre'])
-		entry['genre'] = re.sub('verse', 'Gedicht', entry['genre'])
-		entry['genre'] = re.sub('drama', 'Szene/Dialog/Hörspiel', entry['genre'])
-		entry['genre'] = re.sub('interview', 'Interview', entry['genre'])
+		try:
+			entry['genre'] = re.sub('prosepoetry', 'Prosagedicht', entry['genre'])
+			entry['genre'] = re.sub('prose', 'Prosa', entry['genre'])
+			entry['genre'] = re.sub('verse', 'Gedicht', entry['genre'])
+			entry['genre'] = re.sub('drama', 'Szene/Dialog/Hörspiel', entry['genre'])
+			entry['genre'] = re.sub('interview', 'Interview', entry['genre'])
+		except:
+			print('Genre-Fehler (Komma vergessen?) bei', entry)
+			continue
 
 		# Datum > Jahr & Jahrzehnt:
 		if 'date' in entry:
