@@ -32494,7 +32494,8 @@ var rows = [
  },
  {
   "wikidata": "Q56748433",
-  "pages": "[ohne Seitenangabe]",
+  "note": "Über Aichingers Text steht ein Beitrag von Heinz F. Schafroth: »In Sprache schweigen«.",
+  "pages": "S. 35",
   "date": "1973-09-05",
   "number": "36",
   "publisher": ['Weltwoche-Verlag'],
@@ -32510,7 +32511,7 @@ var rows = [
   "Jahr": "1973",
   "Jahrzehnt": "1970er",
   "datum": "am 5.9.1973",
-  "seiten": "o.A.",
+  "seiten": "1 Seite",
   "urlb": "nein",
  },
  {
