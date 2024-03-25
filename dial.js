@@ -40426,7 +40426,7 @@ var rows = [
   "location": ['Frankfurt am Main'],
   "publisher": ['S. Fischer'],
   "date": "2024-03-20",
-  "editor": "Lektor*innen des S. Fischer Verlags",
+  "editor": "Sebastian Guggolz",
   "number": "1",
   "volume": "135",
   "issuetitle": "Kafka Kafka Kafka Kafka Kafka",
