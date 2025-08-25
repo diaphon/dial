@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: dial. Das Digitale Ilse Aichinger Literaturverzeichnis
+message: If you use this dataset, please cite it using the metadata from this file.
+type: dataset
+authors:
+  - given-names: Andreas
+    family-names: Dittrich
+    orcid: 'https://orcid.org/0000-0002-1984-7389'
+url: 'http://dial.aichingerhaus.at/'
+repository: 'https://id.acdh.oeaw.ac.at/dial'
+keywords:
+  - Ilse Aichinger
+  - Subjektive Personalbibliografie
+  - Bibliografie
+  - Literaturverzeichnis
+reference:
+  - authors:
+      - family-names: Dittrich
+        given-names: Andreas
+    doi: "10.1553/dha-proceedings2018s34"
+    title: 'dial. Das Digitale Ilse Aichinger Literaturverzeichnis. Methoden, Quellen und eine erste Auswertung des Literaturverzeichnisses'
+    journal: "digital humanities austria 2018"
+    type: article
+    year: 2020
