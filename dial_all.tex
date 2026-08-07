@@ -1,0 +1,41 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8
+\documentclass[a4paper,titlepage=firstiscover,fontsize=10pt,DIV=10,bibliography=totoc]{scrartcl}
+\usepackage{fontspec,hyperref,csquotes}
+\usepackage[a-1b]{pdfx} % PDF/A erzeugen; a-1a von Paket nicht voll entwickelt
+\usepackage[ngerman]{babel}
+\usepackage[onehalfspacing]{setspace}
+\setquotestyle[guillemets]{german}
+\hypersetup{colorlinks=false,pdfborder={0 0 0}}
+\urlstyle{same}
+\usepackage[style=numeric, maxnames=999, bibstyle=numeric, sorting=ynt, block=space, backend=biber]{biblatex}
+\addbibresource{../../../dial.bib}
+\setmainfont[Numbers=OldStyle]{Alegreya Sans}
+\setkomafont{title}{\normalfont\bfseries\Huge}
+\setkomafont{author}{\normalfont\Large}
+\setkomafont{date}{\normalfont\normalsize}
+\setkomafont{disposition}{\normalfont\bfseries}
+\AtEveryBibitem{%
+  \ifentrytype{book}
+    {\bfseries}
+    {}%
+}
+\AtEveryBibitem{%
+  \clearfield{note}%
+}
+
+\author{Andreas Dittrich}
+\title{\textsc{dial}}
+\subtitle{digitales ilse aichinger literaturverzeichnis}
+\publishers{\textsc{pdf/a-1b} Export (\emph{all})}
+\date{Stand: {\today}}
+
+\begin{document}
+
+\maketitle
+
+\nocite{*}
+
+\printbibliography[title={Verzeichnis}]
+
+\end{document}
