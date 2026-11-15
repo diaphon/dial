@@ -60264,7 +60264,7 @@ var rows = [
   "pages": "S. 42–48",
   "date": "2007",
   "keywords": "prose",
-  "note": "Erstgesendet am 10.7.1955, vgl. »Die Frühvollendeten«, hrsg. v. Simone Fässler, Edition Korrespondenzen: Wien 2021, S. 193.",
+  "note": "Erstgesendet am 10.7.1955, vgl. »Die Frühvollendeten«, hrsg. v. Simone Fässler, Edition Korrespondenzen: Wien 2021, S. 193; vgl. das Faksimile des Deckblatts mit der Aufschrift »Spätherbst 1955« in Christine Ivanovic: »Das grüne Märchenbuch aus Linz«, Adalbert-Stifter-Institut: Linz 2021, S. 300.",
   "location": ['München'],
   "number": "175",
   "publisher": ['Edition Text + Kritik'],
